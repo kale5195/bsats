@@ -20,4 +20,4 @@ npm run ios
 
 <img width="300" alt="image" src="https://user-images.githubusercontent.com/95554104/185049096-1a13190e-0f99-4325-9df4-54a2f8758fbe.png">
 
-<img width="363" alt="image" src="https://user-images.githubusercontent.com/95554104/185049216-211ef766-691d-4cf7-a154-add65d899e01.png">
+<img width="300" alt="image" src="https://user-images.githubusercontent.com/95554104/185049216-211ef766-691d-4cf7-a154-add65d899e01.png">
