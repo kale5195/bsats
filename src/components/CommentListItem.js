@@ -15,6 +15,7 @@ export default function CommentListItem({ item }) {
       onPress={() => {
         navigation.push('PostScreen', {
           id: item.root.id,
+          cid: item.id,
         });
       }}>
       <PostDesc item={item} />
