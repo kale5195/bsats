@@ -19,7 +19,7 @@ export default function CommentListItem({ item }) {
         });
       }}>
       <PostDesc item={item} />
-      <Text style={tw`text-xs text-neutral-500`}>on:{item.root.title}</Text>
+      <Text style={tw`text-xs text-neutral-500`}>on:{item.root.title?.slice(0, 128)}</Text>
       <PostMarkdown text={item.text} />
     </FixedTouchableOpacity>
   );

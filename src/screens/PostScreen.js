@@ -59,7 +59,9 @@ export default PostScreen = observer(({ route, navigation }) => {
         <ActivityIndicator color="#c9c9c9" style={tw`mt-2`} size="large" />
       ) : (
         <SpecialScrollView scrollToOverflowEnabled={true} style={tw`flex-1 p-2`} scrollIndicatorInsets={{ right: 1 }}>
-          <Text style={tw`text-base text-neutral-800 dark:text-gray-50 font-semibold px-2`}>{data.item.title}</Text>
+          <Text style={tw`text-base text-neutral-800 dark:text-gray-50 font-semibold px-2`}>
+            {data.item.title?.slice(0, 128)}
+          </Text>
           <View style={tw`px-2`}>
             <PostUrl url={data.item.url} />
             <PostDesc item={data.item} />
