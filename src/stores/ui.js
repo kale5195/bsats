@@ -6,11 +6,7 @@ class UIStore {
   appearance = 'auto'; // light auto dark
   homeTab = 1;
   systemColor = Appearance.getColorScheme();
-  commentY = 0;
 
-  setCommentY = (v) => {
-    this.commentY = v;
-  };
   setAppearanceMode = (v) => {
     this.appearance = v;
   };
