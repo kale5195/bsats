@@ -15,9 +15,16 @@ export default function PostMarkdown({ text, ...restPros }) {
     <Markdown
       markdownit={MarkdownIt({ typographer: true, linkify: true, breaks: true })}
       onLinkPress={(url) => {
-        navigation.push('ExternalLinkScreen', {
-          url: url,
-        });
+        const matches = url.match(/stacker.news\/items\/(\d+)/);
+        if (matches && matches?.[1]) {
+          navigation.push('PostScreen', {
+            id: matches[1],
+          });
+        } else {
+          navigation.push('ExternalLinkScreen', {
+            url: url,
+          });
+        }
       }}
       rules={{
         image: (node, children, parent, styles, allowedImageHandlers, defaultImageHandler) => {
