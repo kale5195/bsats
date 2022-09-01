@@ -11,7 +11,9 @@ export default function Comment({ item, idx, cid }) {
   const navigation = useNavigation();
   const CustomView = item.id === cid ? SpecialView : View;
   return (
-    <CustomView focused={item.id === cid} style={tw`bg-black/3 dark:bg-white/4 ml-2 pt-2 pl-2 rounded`}>
+    <CustomView
+      focused={item.id === cid}
+      style={tw`bg-black/3 dark:bg-white/4 ${idx > 0 ? 'ml-2' : ''} pt-2 pl-2 rounded`}>
       <PostDesc item={item} term="replies" showEye isOp={item.root?.user.name === item.user.name} />
       <PostMarkdown text={item.text} style={tw`mt-1 pr-1`} />
       {idx <= 8 ? (
