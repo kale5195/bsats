@@ -15,7 +15,7 @@ export default function PostDesc({
   const { tw, isDark } = useTailwind();
   const navigation = useNavigation();
   return (
-    <View style={tw`flex flex-row justify-between items-center mt-1 pr-1`}>
+    <View style={tw`relative mt-1 pr-1`}>
       <View style={tw`flex-row items-center`}>
         <Text style={tw`mr-1 text-xs text-neutral-500`}>{item.sats} sats \</Text>
         <Text style={tw`mr-1 text-xs text-neutral-500`}>
@@ -31,7 +31,7 @@ export default function PostDesc({
         <Text style={tw`text-xs text-neutral-500`}>{fromNowUTC(item.createdAt)}</Text>
       </View>
       {!_.isNil(hiddenStatus) && (
-        <TouchableOpacity onPress={hideComment}>
+        <TouchableOpacity onPress={hideComment} style={tw`absolute right-0 -top-2 p-2`}>
           <MaterialCommunityIcons
             size={12}
             name={hiddenStatus ? 'chevron-down' : 'chevron-up'}
