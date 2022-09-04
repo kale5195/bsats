@@ -3,8 +3,15 @@ import { useNavigation } from '@react-navigation/native';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import useTailwind from '~/hooks/useTailwind';
 import { fromNowUTC } from '~/utils/dateUtils';
+import _ from 'lodash';
 
-export default function PostDesc({ item, term = 'comments', showEye = false, isOp = false }) {
+export default function PostDesc({
+  item,
+  term = 'comments',
+  isOp = false,
+  hiddenStatus = undefined,
+  hideComment = undefined,
+}) {
   const { tw, isDark } = useTailwind();
   const navigation = useNavigation();
   return (
@@ -23,10 +30,14 @@ export default function PostDesc({ item, term = 'comments', showEye = false, isO
         {isOp && <Text style={tw`text-xs text-purple-600 font-bold mr-1`}>OP</Text>}
         <Text style={tw`text-xs text-neutral-500`}>{fromNowUTC(item.createdAt)}</Text>
       </View>
-      {showEye && (
-        <View>
-          <MaterialCommunityIcons size={12} name="eye-outline" color={isDark ? 'white' : 'black'} />
-        </View>
+      {!_.isNil(hiddenStatus) && (
+        <TouchableOpacity onPress={hideComment}>
+          <MaterialCommunityIcons
+            size={12}
+            name={hiddenStatus ? 'chevron-down' : 'chevron-up'}
+            color={isDark ? 'white' : 'black'}
+          />
+        </TouchableOpacity>
       )}
     </View>
   );

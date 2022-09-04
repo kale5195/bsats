@@ -12,7 +12,7 @@ const renderScene = ({ route }) => {
   switch (route.key) {
     case 'home':
       return <PostList v={{}} />;
-    case 'new':
+    case 'recent':
       return <PostList v={{ sort: 'recent' }} />;
     case 'top':
       return <PostList v={{ sort: 'top' }} showHeader />;
@@ -49,7 +49,7 @@ export default HomeScreen = observer(() => {
   );
   const [index, setIndex] = React.useState(uiStore.homeTab);
   const [routes] = React.useState([
-    { key: 'new', title: 'Recent' },
+    { key: 'recent', title: 'Recent' },
     { key: 'home', title: 'Home' },
     { key: 'top', title: '🔥Post' },
     { key: 'comments', title: '🔥Comment' },
