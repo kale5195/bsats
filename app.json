@@ -1,10 +1,10 @@
 {
   "expo": {
-    "name": "stacker",
-    "slug": "stacker",
+    "name": "bsats",
+    "slug": "bsats",
     "version": "1.0.0",
     "orientation": "portrait",
-    "scheme": "stacker",
+    "scheme": "bsats",
     "icon": "./assets/icon.png",
     "splash": {
       "image": "./assets/splash.png",
@@ -14,18 +14,25 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.stacker.app",
+      "bundleIdentifier": "xyz.bsats",
       "buildNumber": "1.0.0"
     },
     "android": {
-      "package": "com.stacker.app",
+      "package": "xyz.bsats",
       "versionCode": 1
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "bc815dc7-9e2a-48fa-bc6e-0bb926d236ca"
+      }
     }
   }
 }
