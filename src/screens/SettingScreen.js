@@ -162,21 +162,21 @@ export default SettingScreen = observer(({ navigation }) => {
           />
           <SettingItem
             icon="thumbs-up"
-            name="Rate Stacker"
+            name="Rate Bsats"
             onPress={() => {
               toast.show('To Be Implemented');
             }}
           />
           <SettingItem
             icon="share-2"
-            name="Share Stacker"
+            name="Share Bsats"
             onPress={() => {
               toast.show('To Be Implemented');
             }}
           />
           <SettingItem
             icon="alert-circle"
-            name="About Stacker"
+            name="About Bsats"
             onPress={() => {
               toast.show('To Be Implemented');
             }}
