@@ -1,6 +1,7 @@
 import React, { useState, useMemo, useRef, useCallback } from 'react';
 import _ from 'lodash';
 import { observer } from 'mobx-react-lite';
+import * as WebBrowser from 'expo-web-browser';
 import * as NavigationBar from 'expo-navigation-bar';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import Feather from '@expo/vector-icons/Feather';
@@ -178,7 +179,7 @@ export default SettingScreen = observer(({ navigation }) => {
             icon="alert-circle"
             name="About Bsats"
             onPress={() => {
-              toast.show('To Be Implemented');
+              WebBrowser.openBrowserAsync(`https://github.com/kale5195/bsats`);
             }}
           />
         </View>

@@ -14,16 +14,14 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "xyz.bsats",
+      "bundleIdentifier": "xyz.bsats.app",
       "buildNumber": "1.0.0"
     },
     "android": {
-      "package": "xyz.bsats",
+      "package": "xyz.bsats.app",
       "versionCode": 1
     },
     "web": {
