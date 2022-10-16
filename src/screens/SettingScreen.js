@@ -8,7 +8,7 @@ import Feather from '@expo/vector-icons/Feather';
 
 import { BottomSheetTextInput, BottomSheetModal, BottomSheetBackdrop } from '@gorhom/bottom-sheet';
 
-import { View, TouchableOpacity, ScrollView, Alert } from 'react-native';
+import { View, TouchableOpacity, ScrollView, Alert, Share } from 'react-native';
 import { useAppColorScheme } from 'twrnc';
 import Text from '~/components/common/Text';
 import { useStores } from '~/stores';
@@ -22,7 +22,7 @@ export default SettingScreen = observer(({ navigation }) => {
   const SettingItem = ({ icon, name, onPress }) => {
     return (
       <TouchableOpacity
-        style={tw`mx-4 py-4 border-t border-gray-200 dark:border-gray-800 flex-row items-center justify-between`}
+        style={tw`mx-4 py-4 border-t border-gray-200 dark:border-gray-900 flex-row items-center justify-between`}
         onPress={onPress}>
         <View style={tw`flex-row items-center`}>
           <Feather name={icon} style={tw`text-xl dark:text-neutral-100`} />
@@ -46,7 +46,7 @@ export default SettingScreen = observer(({ navigation }) => {
 
     return (
       <View
-        style={tw`mx-4 pb-2 pt-4 border-t border-gray-200 dark:border-gray-800 flex-row items-center justify-between`}>
+        style={tw`mx-4 pb-2 pt-4 border-t border-gray-200 dark:border-gray-900 flex-row items-center justify-between`}>
         <View style={tw`flex-row items-center`}>
           <Feather name={icon} style={tw`text-xl dark:text-neutral-100`} />
           <Text style={tw`ml-2`}>{name}</Text>
@@ -94,6 +94,14 @@ export default SettingScreen = observer(({ navigation }) => {
       });
     }
   };
+
+  const onShare = async () => {
+    const result = await Share.share({
+      title: 'Bsats is a simple Stacker News client for iOS and Android',
+      message: 'Bsats is a simple Stacker News client for iOS and Android',
+    });
+  };
+
   const renderBackdrop = useCallback(
     (props) => (
       <BottomSheetBackdrop
@@ -161,20 +169,14 @@ export default SettingScreen = observer(({ navigation }) => {
               ]);
             }}
           />
-          <SettingItem
+          {/* <SettingItem
             icon="thumbs-up"
             name="Rate Bsats"
             onPress={() => {
               toast.show('To Be Implemented');
             }}
-          />
-          <SettingItem
-            icon="share-2"
-            name="Share Bsats"
-            onPress={() => {
-              toast.show('To Be Implemented');
-            }}
-          />
+          /> */}
+          <SettingItem icon="share-2" name="Share Bsats" onPress={onShare} />
           <SettingItem
             icon="alert-circle"
             name="About Bsats"

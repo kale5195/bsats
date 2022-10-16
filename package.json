@@ -54,7 +54,8 @@
     "react-native-webview": "11.23.0",
     "react-query": "^3.34.19",
     "twrnc": "^3.4.0",
-    "url": "^0.11.0"
+    "url": "^0.11.0",
+    "expo-store-review": "~5.3.0"
   },
   "devDependencies": {
     "@babel/core": "^7.18.6",

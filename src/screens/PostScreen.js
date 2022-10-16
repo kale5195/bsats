@@ -51,7 +51,7 @@ export default PostScreen = observer(({ route, navigation }) => {
             onPress={() => {
               WebBrowser.openBrowserAsync(`https://stacker.news/items/${route.params.id}`);
             }}>
-            <FontistoIcons size={20} name="world-o" style={tw`px-2 text-gray-600 dark:text-neutral-100`} />
+            <Ionicons size={22} style={tw`px-2 text-gray-600 dark:text-neutral-100`} name="share-outline" />
           </TouchableOpacity>
         </View>
       </View>

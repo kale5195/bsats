@@ -6,7 +6,7 @@ import Container from '~/components/Container';
 import { ITEM } from '~/fragments/items';
 import FixedTouchableOpacity from '~/components/FixedTouchableOpacity';
 
-export default HistoryScreen = ({ navigation }) => {
+export default HistoryScreen = ({ navigation }) => {  
   const { tw } = useTailwind();
   const { postStore } = useStores();
 
