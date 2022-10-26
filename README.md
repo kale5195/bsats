@@ -3,7 +3,7 @@
 
 You can download the app from: 
 
-[Apple Store](https://apps.apple.com/app/id6443531395)   
+[Apple Store](https://apps.apple.com/app/id6443531395?platform=iphone)   
 [Google Play](https://play.google.com/store/apps/details?id=xyz.bsats.app&hl=en_US&gl=US)
 
 For android users, you can alsoe download the apk from releases.
