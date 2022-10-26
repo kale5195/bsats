@@ -1,9 +1,12 @@
 # Bsats for stacker.news
 [Stacker News](https://stacker.news) is like Hacker News but we pay you Bitcoin. Bsats is an unofficial ios / android app for stacker.news.
 
-Will publish to App Store and Google Play soon.
+You can download the app from: 
 
-For android users, you can download the apk from releases.
+[Apple Store](https://apps.apple.com/app/id6443531395)   
+[Google Play](https://play.google.com/store/apps/details?id=xyz.bsats.app&hl=en_US&gl=US)
+
+For android users, you can alsoe download the apk from releases.
 
 # Local Development (mac)
 1. npm install -g expo-cli   
