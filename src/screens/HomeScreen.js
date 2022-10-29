@@ -7,6 +7,7 @@ import Container from '~/components/Container';
 import PostList from '~/components/PostList';
 import TopList from '~/components/TopList';
 import { useStores } from '~/stores';
+import JobList from '~/components/JobList';
 
 const renderScene = ({ route }) => {
   switch (route.key) {
@@ -16,6 +17,8 @@ const renderScene = ({ route }) => {
       return <PostList v={{ sort: 'recent' }} />;
     case 'top':
       return <TopList />;
+    case 'jobs':
+      return <JobList />;
     default:
       return null;
   }
@@ -50,6 +53,7 @@ export default HomeScreen = observer(() => {
     { key: 'recent', title: 'Recent' },
     { key: 'home', title: 'Home' },
     { key: 'top', title: 'Top' },
+    { key: 'jobs', title: 'Jobs' },
   ]);
 
   return (

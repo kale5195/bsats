@@ -1,6 +1,7 @@
 import useGraphInfiniteRequest from '~/services/useGraphInfiniteRequest';
 import useGraphQuery from '~/services/useGraphQuery';
 import { ITEMS, ITEM_FULL, TOP_ITEMS } from '~/fragments/items';
+import { SUB_ITEMS } from '~/fragments/subs';
 import { USER_FULL, TOP_USERS } from '~/fragments/users';
 import { CREATE_AUTH, LN_AUTH } from '~/fragments/auth';
 import { MORE_FLAT_COMMENTS, TOP_COMMENTS } from '~/fragments/comments';
@@ -24,6 +25,7 @@ const topKeyMap = {
 };
 export const StackerNews = {
   posts: (v) => useGraphInfiniteRequest(['post-list', v], ITEMS, v),
+  subs: (v) => useGraphInfiniteRequest(['sub-list', v], SUB_ITEMS, v, 'SubRecent'),
   topItems: (key, v) => {
     return useGraphInfiniteRequest(
       [`top-${key}`, v],

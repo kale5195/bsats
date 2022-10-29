@@ -2,8 +2,8 @@ import { Text, View, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import useTailwind from '~/hooks/useTailwind';
-import { fromNowUTC } from '~/utils/dateUtils';
 import _ from 'lodash';
+import { timeSince } from '~/lib/time';
 
 export default function PostDesc({
   item,
@@ -28,7 +28,7 @@ export default function PostDesc({
           <Text style={tw`mr-1 text-xs text-sky-600`}>@{item.user.name}</Text>
         </TouchableOpacity>
         {isOp && <Text style={tw`text-xs text-purple-600 font-bold mr-1`}>OP</Text>}
-        <Text style={tw`text-xs text-neutral-500`}>{fromNowUTC(item.createdAt)}</Text>
+        <Text style={tw`text-xs text-neutral-500`}>{timeSince(new Date(item.createdAt))}</Text>
       </View>
       {!_.isNil(hiddenStatus) && (
         <TouchableOpacity onPress={hideComment} style={tw`absolute right-0 -top-2 p-2`}>
