@@ -5,7 +5,7 @@ import { useScrollToTop } from '@react-navigation/native';
 import useTailwind from '~/hooks/useTailwind';
 import { queryClient } from '~/services/queryClient';
 
-export default function CommonList({ queryRes, ListHeaderComponent, ListItem }) {
+export default function CommonList({ queryRes, ListHeaderComponent, ListItem, idKey = 'id' }) {
   const { data, fetchNextPage, isFetching, hasNextPage, refetch, isLoading, queryKeys } = queryRes;
   const { tw } = useTailwind();
   const ref = useRef(null);
@@ -27,7 +27,7 @@ export default function CommonList({ queryRes, ListHeaderComponent, ListItem }) 
       data={data}
       ListHeaderComponent={ListHeaderComponent}
       keyExtractor={(item) => {
-        return item.id.toString();
+        return item[idKey].toString();
       }}
       renderItem={({ item }) => <ListItem item={item} />}
       estimatedItemSize={70}

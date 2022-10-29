@@ -5,7 +5,7 @@ import useTailwind from '~/hooks/useTailwind';
 import { observer } from 'mobx-react-lite';
 import Container from '~/components/Container';
 import PostList from '~/components/PostList';
-import CommentList from '~/components/CommentList';
+import TopList from '~/components/TopList';
 import { useStores } from '~/stores';
 
 const renderScene = ({ route }) => {
@@ -15,9 +15,7 @@ const renderScene = ({ route }) => {
     case 'recent':
       return <PostList v={{ sort: 'recent' }} />;
     case 'top':
-      return <PostList v={{ sort: 'top' }} showHeader />;
-    case 'comments':
-      return <CommentList v={{ sort: 'top' }} showHeader />;
+      return <TopList />;
     default:
       return null;
   }
@@ -51,8 +49,7 @@ export default HomeScreen = observer(() => {
   const [routes] = React.useState([
     { key: 'recent', title: 'Recent' },
     { key: 'home', title: 'Home' },
-    { key: 'top', title: '🔥Post' },
-    { key: 'comments', title: '🔥Comment' },
+    { key: 'top', title: 'Top' },
   ]);
 
   return (

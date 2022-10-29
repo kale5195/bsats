@@ -28,6 +28,18 @@ export const COMMENT_FIELDS = gql`
   }
 `;
 
+export const TOP_COMMENTS = gql`
+  ${COMMENT_FIELDS}
+  query topComments($sort: String, $cursor: String, $when: String = "day") {
+    topComments(sort: $sort, cursor: $cursor, when: $when) {
+      cursor
+      comments {
+        ...CommentFields
+      }
+    }
+  }
+`;
+
 export const MORE_FLAT_COMMENTS = gql`
   ${COMMENT_FIELDS}
   query MoreFlatComments($sort: String!, $cursor: String, $name: String, $within: String) {

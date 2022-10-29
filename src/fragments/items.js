@@ -136,3 +136,19 @@ export const ITEM_SEARCH = gql`
     }
   }
 `;
+
+export const TOP_ITEMS = gql`
+  ${ITEM_FIELDS}
+  query topItems($sort: String, $cursor: String, $when: String = "day") {
+    topItems(sort: $sort, cursor: $cursor, when: $when) {
+      cursor
+      items {
+        ...ItemFields
+        position
+      },
+      pins {
+        ...ItemFields
+        position
+      }
+    }
+  }`
