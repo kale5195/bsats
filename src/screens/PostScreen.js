@@ -15,13 +15,15 @@ import Container from '~/components/Container';
 import { observer } from 'mobx-react-lite';
 import PollView from '~/components/PollView';
 import { SpecialScrollView } from 'react-native-scroll-to-element';
+import PostListItem from '~/components/PostListItem';
+import RelatedPostList from '~/components/RelatedPostList';
 
 export default PostScreen = observer(({ route, navigation }) => {
   const { tw } = useTailwind();
   const { postStore } = useStores();
   const { id, cid } = route.params;
   const { data, isLoading } = StackerNews.post(id);
-
+  // const { data: relatedData, isLoading: relatedDataLoading } = StackerNews.relatedPosts(id, 5);
   return (
     <Container>
       <View
@@ -76,6 +78,7 @@ export default PostScreen = observer(({ route, navigation }) => {
           <View style={tw`mb-5`}>
             <Text style={tw`text-center py-5 dark:text-gray-50`}>END</Text>
           </View>
+          {/* {!relatedDataLoading && <RelatedPostList items={relatedData?.related?.items} />} */}
         </SpecialScrollView>
       )}
     </Container>

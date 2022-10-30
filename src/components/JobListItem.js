@@ -33,7 +33,7 @@ export default function JobListItem({ item }) {
         <Text style={tw`text-base w-full text-neutral-800 font-semibold dark:text-gray-50`}>
           {item.title?.slice(0, 128)}
         </Text>
-        <View style={tw`mt-1 flex-row items-center flex-wrap`}>
+        <View style={tw`mt-0.5 flex-row items-center flex-wrap`}>
           <Text style={tw`mr-1 text-xs text-neutral-500`}>{item.company} \ </Text>
           <Text style={tw`mr-1 text-xs text-neutral-500`}>
             {`${item.location || ''}${item.location && item.remote ? ' or ' : ''}${item.remote ? 'Remote' : ''}`}
