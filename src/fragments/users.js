@@ -164,3 +164,16 @@ export const USER_WITH_POSTS = gql`
     }
   }
 `;
+
+export const USER_SEARCH = gql`
+  query searchUsers($q: String!, $limit: Int, $similarity: Float) {
+    searchUsers(q: $q, limit: $limit, similarity: $similarity) {
+      name
+      photoId
+      stacked
+      spent
+      ncomments
+      nitems
+    }
+  }
+`;

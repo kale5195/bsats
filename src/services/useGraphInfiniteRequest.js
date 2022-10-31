@@ -1,11 +1,18 @@
 import { useInfiniteQuery } from 'react-query';
 import { request } from 'graphql-request';
 
-export default function useGraphInfiniteRequest(key, query, variable, entityKey = 'items', itemKey = 'items') {
+export default function useGraphInfiniteRequest(
+  key,
+  query,
+  variable,
+  entityKey = 'items',
+  itemKey = 'items',
+  enabled = true
+) {
   const { data, ...rest } = useInfiniteQuery(
     key,
     ({ pageParam }) => {
-      // console.log(key, pageParam);
+      // console.log('useGraphInfiniteRequest', key);
       return request('https://stacker.news/api/graphql', query, { cursor: pageParam, ...variable });
     },
     {
@@ -16,6 +23,7 @@ export default function useGraphInfiniteRequest(key, query, variable, entityKey 
         }
         return cursor;
       },
+      enabled,
     }
   );
   return {

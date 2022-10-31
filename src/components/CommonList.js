@@ -43,7 +43,7 @@ export default function CommonList({ queryRes, ListHeaderComponent, ListItem, id
         }
         return (
           <View style={tw`mb-[100px]`}>
-            <Text style={tw`text-center py-5 dark:text-gray-50`}>No More Posts</Text>
+            <Text style={tw`text-center py-5 dark:text-gray-50`}>END</Text>
           </View>
         );
       }}

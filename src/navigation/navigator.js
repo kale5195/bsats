@@ -19,6 +19,7 @@ import HomeScreen from '~/screens/HomeScreen';
 import PostScreen from '~/screens/PostScreen';
 import ProfileScreen from '~/screens/ProfileScreen';
 import SettingScreen from '~/screens/SettingScreen';
+import SearchScreen from '~/screens/SearchScreen';
 import useTailwind from '~/hooks/useTailwind';
 import HistoryScreen from '~/screens/HistoryScreen';
 import FavScreen from '~/screens/FavScreen';
@@ -152,6 +153,15 @@ const BottomTabNavigator = () => {
           tabBarIcon: ({ color }) => (
             <MaterialCommunityIcons size={25} style={tw`-mb-1`} name="lightning-bolt-outline" color={color} />
           ),
+        }}
+      />
+      <BottomTab.Screen
+        name="SearchScreen"
+        component={SearchScreen}
+        options={{
+          title: 'Search',
+          headerShown: true,
+          tabBarIcon: ({ color }) => <Ionicons size={30} style={tw`-mb-1`} name="search" color={color} />,
         }}
       />
       <BottomTab.Screen

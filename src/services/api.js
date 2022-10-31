@@ -1,8 +1,9 @@
+import _ from 'lodash';
 import useGraphInfiniteRequest from '~/services/useGraphInfiniteRequest';
 import useGraphQuery from '~/services/useGraphQuery';
-import { ITEMS, ITEM_FULL, TOP_ITEMS, RELATED_ITEMS } from '~/fragments/items';
+import { ITEMS, ITEM_FULL, TOP_ITEMS, RELATED_ITEMS, ITEM_SEARCH } from '~/fragments/items';
 import { SUB_ITEMS } from '~/fragments/subs';
-import { USER_FULL, TOP_USERS } from '~/fragments/users';
+import { USER_FULL, TOP_USERS, USER_SEARCH } from '~/fragments/users';
 import { CREATE_AUTH, LN_AUTH } from '~/fragments/auth';
 import { MORE_FLAT_COMMENTS, TOP_COMMENTS } from '~/fragments/comments';
 
@@ -25,6 +26,15 @@ const topKeyMap = {
 };
 export const StackerNews = {
   posts: (v) => useGraphInfiniteRequest(['post-list', v], ITEMS, v),
+  searchUsers: (username) => {
+    return useGraphQuery(
+      ['search-users', username],
+      USER_SEARCH,
+      { q: username, limit: 10 },
+      { enabled: !_.isEmpty(username) }
+    );
+  },
+  search: (v) => useGraphInfiniteRequest(['search-list', v], ITEM_SEARCH, v, 'search', 'items', !_.isEmpty(v?.q)),
   subs: (v) => useGraphInfiniteRequest(['sub-list', v], SUB_ITEMS, v, 'SubRecent'),
   comments: (v) => useGraphInfiniteRequest(['comment-list', v], MORE_FLAT_COMMENTS, v, 'moreFlatComments', 'comments'),
   post: (id) => useGraphQuery(['single-posts', id], ITEM_FULL, { id }),

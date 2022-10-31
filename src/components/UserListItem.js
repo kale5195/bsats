@@ -23,9 +23,9 @@ export default function UserListItem({ item }) {
         }}
         style={tw`w-[50px] h-[50px] rounded-lg`}
       />
-      <View style={tw`ml-2 flex-col`}>
+      <View style={tw`ml-2 flex-col flex-1`}>
         <Text style={tw`text-base font-medium dark:text-neutral-100`}>@{item.name}</Text>
-        <View style={tw`mt-1 flex-row`}>
+        <View style={tw`mt-1 flex-row flex-wrap`}>
           <Text style={tw`text-xs dark:text-neutral-100`}>{abbrNum(item.stacked)} stacked \ </Text>
           <Text style={tw`text-xs dark:text-neutral-100`}>{abbrNum(item.spent)} spent \ </Text>
           <Text style={tw`text-xs dark:text-neutral-100`}>{abbrNum(item.nitems)} posts \ </Text>
