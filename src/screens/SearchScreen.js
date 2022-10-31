@@ -54,13 +54,14 @@ export default SearchScreen = observer(() => {
     <View style={tw`flex-1`}>
       <View style={tw`mt-1 flex-row justify-between px-2 items-center py-2`}>
         <TextInput
-          style={tw`bg-white dark:bg-gray-200 flex-1 py-2 mr-2 px-2 rounded border border-gray-300`}
+          style={tw`bg-white  dark:bg-gray-800 dark:text-gray-200 flex-1 py-2 mr-2 px-2 rounded border border-gray-300 dark:border-gray-600`}
           onChangeText={(text) => {
             setParams((prev) => {
               return { ...prev, q: '' };
             });
             setContent(text);
           }}
+          placeholderTextColor="#999"
           placeholder="Please input content"
           onSubmitEditing={onSearchSubmit}
           value={content}
