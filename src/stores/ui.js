@@ -2,7 +2,7 @@ import { Appearance } from 'react-native';
 import { makeAutoObservable } from 'mobx';
 import { hydrateStore, makePersistable } from 'mobx-persist-store';
 
-class UIStore {
+export class UIStore {
   appearance = 'auto'; // light auto dark
   homeTab = 1;
   systemColor = Appearance.getColorScheme();
@@ -30,7 +30,7 @@ class UIStore {
     makeAutoObservable(this);
 
     makePersistable(this, {
-      name: UIStore.name,
+      name: 'uiStore',
       properties: ['appearance', 'homeTab'],
     });
   }
@@ -38,5 +38,3 @@ class UIStore {
     await hydrateStore(this);
   };
 }
-
-export default new UIStore();

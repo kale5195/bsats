@@ -2,7 +2,7 @@ import _ from 'lodash';
 import { makeAutoObservable } from 'mobx';
 import { hydrateStore, makePersistable } from 'mobx-persist-store';
 
-class PostStore {
+export class PostStore {
   historyPosts = [];
   favPosts = [];
 
@@ -41,7 +41,7 @@ class PostStore {
     makeAutoObservable(this, {}, { autoBind: true });
 
     makePersistable(this, {
-      name: PostStore.name,
+      name: 'postStore',
       properties: ['historyPosts', 'favPosts'],
     });
   }
@@ -49,5 +49,3 @@ class PostStore {
     await hydrateStore(this);
   };
 }
-
-export default new PostStore();

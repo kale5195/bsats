@@ -1,14 +1,16 @@
 import React from 'react';
 import './_hydration';
-import UIStore from './ui';
-import ProfileStore from './profile';
-import PostStore from './post';
+import { UIStore } from './ui';
+import { ProfileStore } from './profile';
+import { PostStore } from './post';
 
-export const stores = {
-  uiStore: UIStore,
-  profileStore: ProfileStore,
-  postStore: PostStore,
-};
+class Stores {
+  uiStore = new UIStore();
+  profileStore = new ProfileStore();
+  postStore = new PostStore();
+}
+
+export const stores = new Stores();
 
 const storeContext = React.createContext(stores);
 export const StoresProvider = ({ children }) => (

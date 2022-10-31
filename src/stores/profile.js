@@ -1,7 +1,7 @@
 import { makeAutoObservable } from 'mobx';
 import { hydrateStore, makePersistable } from 'mobx-persist-store';
 
-class ProfileStore {
+export class ProfileStore {
   token = undefined;
   username = undefined;
   get isLogin() {
@@ -24,7 +24,7 @@ class ProfileStore {
     makeAutoObservable(this, {}, { autoBind: true });
 
     makePersistable(this, {
-      name: ProfileStore.name,
+      name: 'profileStore',
       properties: ['token', 'username'],
     });
   }
@@ -32,5 +32,3 @@ class ProfileStore {
     await hydrateStore(this);
   };
 }
-
-export default new ProfileStore();
