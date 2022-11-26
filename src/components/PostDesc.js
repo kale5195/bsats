@@ -4,6 +4,7 @@ import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import useTailwind from '~/hooks/useTailwind';
 import _ from 'lodash';
 import { timeSince } from '~/lib/time';
+import { abbrNum } from '~/lib/format';
 
 export default function PostDesc({
   item,
@@ -17,7 +18,7 @@ export default function PostDesc({
   return (
     <View style={tw`relative mt-1 pr-1`}>
       <View style={tw`flex-row items-center`}>
-        <Text style={tw`mr-1 text-xs text-neutral-500`}>{item.sats} sats \</Text>
+        <Text style={tw`mr-1 text-xs text-neutral-500`}>{abbrNum(item.sats)} sats \</Text>
         <Text style={tw`mr-1 text-xs text-neutral-500`}>
           {item.ncomments} {term} \
         </Text>

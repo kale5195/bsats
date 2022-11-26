@@ -3,7 +3,7 @@ import useGraphInfiniteRequest from '~/services/useGraphInfiniteRequest';
 import useGraphQuery from '~/services/useGraphQuery';
 import { ITEMS, ITEM_FULL, TOP_ITEMS, RELATED_ITEMS, ITEM_SEARCH } from '~/fragments/items';
 import { SUB_ITEMS } from '~/fragments/subs';
-import { USER_FULL, TOP_USERS, USER_SEARCH } from '~/fragments/users';
+import { USER_FULL, TOP_USERS, USER_SEARCH, ME_SSR } from '~/fragments/users';
 import { CREATE_AUTH, LN_AUTH } from '~/fragments/auth';
 import { MORE_FLAT_COMMENTS, TOP_COMMENTS } from '~/fragments/comments';
 
@@ -40,6 +40,7 @@ export const StackerNews = {
   post: (id) => useGraphQuery(['single-posts', id], ITEM_FULL, { id }),
   relatedPosts: (id, limit) => useGraphQuery(['related-posts', id], RELATED_ITEMS, { id, limit }),
   user: (name) => useGraphQuery(['user', name], USER_FULL, { name }),
+  me: () => useGraphQuery(['me'], ME_SSR),
   getUser: (name) => useGraphQuery(['user', name], USER_FULL, { name }, { plain: true }),
   login: (key) => useGraphQuery(['login', key], CREATE_AUTH, {}),
   checkAuth: (k1) => useGraphQuery(['lnauth', k1], LN_AUTH, { k1 }, { plain: true }),

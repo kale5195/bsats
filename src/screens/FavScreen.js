@@ -5,7 +5,6 @@ import useTailwind from '~/hooks/useTailwind';
 import FixedTouchableOpacity from '~/components/FixedTouchableOpacity';
 import { FlashList } from '@shopify/flash-list';
 import { observer } from 'mobx-react-lite';
-import { fromNow } from '~/utils/dateUtils';
 
 export default FavScreen = observer(({ navigation }) => {
   const { tw } = useTailwind();

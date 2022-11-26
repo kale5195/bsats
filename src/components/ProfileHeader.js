@@ -7,6 +7,7 @@ import { StackerNews } from '~/services/api';
 export default function ProfileHeader({ name }) {
   const { tw } = useTailwind();
   const { data, isLoading } = StackerNews.user(name);
+  const { data: meData } = StackerNews.me();
   const navigation = useNavigation();
 
   if (isLoading) {
@@ -25,7 +26,9 @@ export default function ProfileHeader({ name }) {
       />
       <View style={tw`mx-4 flex-col justify-center flex-1`}>
         <Text style={tw`text-base text-black font-bold dark:text-white`}>@{data?.user?.name}</Text>
-        <Text style={tw`mt-1 text-base text-lime-700 font-bold`}>{data?.user?.stacked} stacked</Text>
+        <Text style={tw`mt-1 text-base text-lime-700 font-bold`}>
+          {meData?.me?.name === name && `${meData?.me?.sats} sats \\`} {data?.user?.stacked} stacked
+        </Text>
         <TouchableOpacity
           style={tw`bg-amber-300 px-3 py-2 rounded-md mt-1`}
           onPress={() =>

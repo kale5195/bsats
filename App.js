@@ -1,3 +1,4 @@
+import 'expo-dev-client';
 import { useEffect, useCallback } from 'react';
 import * as SplashScreen from 'expo-splash-screen';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
