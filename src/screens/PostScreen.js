@@ -1,5 +1,4 @@
 import React from 'react';
-import FontistoIcons from '@expo/vector-icons/Fontisto';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import * as WebBrowser from 'expo-web-browser';
@@ -15,14 +14,14 @@ import Container from '~/components/Container';
 import { observer } from 'mobx-react-lite';
 import PollView from '~/components/PollView';
 import { SpecialScrollView } from 'react-native-scroll-to-element';
-import PostListItem from '~/components/PostListItem';
 import RelatedPostList from '~/components/RelatedPostList';
+import UpvoteButton from '~/components/UpvoteButton';
 
 export default PostScreen = observer(({ route, navigation }) => {
   const { tw } = useTailwind();
   const { postStore } = useStores();
   const { id, cid } = route.params;
-  const { data, isLoading } = StackerNews.post(id);
+  const { data, isLoading, refetch } = StackerNews.post(id);
   // const { data: relatedData, isLoading: relatedDataLoading } = StackerNews.relatedPosts(id, 5);
   return (
     <Container>
@@ -70,7 +69,11 @@ export default PostScreen = observer(({ route, navigation }) => {
           </View>
           <PostMarkdown text={data.item.text} style={tw`mt-2 px-2`} />
           <PollView poll={data.item?.poll} />
-
+          <View style={tw`px-2 py-2 my-2 border-t border-b border-zinc-200`}>
+            <TouchableOpacity onPress={() => onTip(id, 1)}>
+              <UpvoteButton id={id} meSats={data?.item?.meSats} refetch={refetch} />
+            </TouchableOpacity>
+          </View>
           {data.item.comments.map((it) => {
             return <Comment item={it} key={it.id} idx={0} cid={cid} />;
           })}
