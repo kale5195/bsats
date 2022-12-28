@@ -1,5 +1,6 @@
 import React from 'react';
 import Ionicons from '@expo/vector-icons/Ionicons';
+import Feather from '@expo/vector-icons/Feather';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import * as WebBrowser from 'expo-web-browser';
 import { View, Text, ActivityIndicator, TouchableOpacity } from 'react-native';
@@ -50,9 +51,12 @@ export default PostScreen = observer(({ route, navigation }) => {
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() => {
-              WebBrowser.openBrowserAsync(`https://stacker.news/items/${route.params.id}`);
+              // WebBrowser.openBrowserAsync(`https://stacker.news/items/${route.params.id}`);
+              navigation.push('ExternalLinkScreen', {
+                url: `https://stacker.news/items/${route.params.id}`,
+              });
             }}>
-            <Ionicons size={22} style={tw`px-2 text-gray-600 dark:text-neutral-100`} name="share-outline" />
+            <Feather size={22} style={tw`px-2 text-gray-600 dark:text-neutral-100`} name="external-link" />
           </TouchableOpacity>
         </View>
       </View>
@@ -69,11 +73,6 @@ export default PostScreen = observer(({ route, navigation }) => {
           </View>
           <PostMarkdown text={data.item.text} style={tw`mt-2 px-2`} />
           <PollView poll={data.item?.poll} />
-          <View style={tw`px-2 py-2 my-2 border-t border-b border-zinc-200`}>
-            <TouchableOpacity onPress={() => onTip(id, 1)}>
-              <UpvoteButton id={id} meSats={data?.item?.meSats} refetch={refetch} />
-            </TouchableOpacity>
-          </View>
           {data.item.comments.map((it) => {
             return <Comment item={it} key={it.id} idx={0} cid={cid} />;
           })}

@@ -6,6 +6,8 @@ export class PostStore {
   historyPosts = [];
   favPosts = [];
 
+  upvotedPosts = {};
+
   addHistoryPost = (v) => {
     const item = {
       ...v,
@@ -35,6 +37,10 @@ export class PostStore {
   clearHistoryPosts = () => {
     this.historyPosts = [];
     this.favPosts = [];
+  };
+
+  setUpvotedPosts = (id, value) => {
+    this.upvotedPosts[id] = value;
   };
 
   constructor() {
