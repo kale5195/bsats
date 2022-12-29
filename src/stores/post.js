@@ -5,7 +5,7 @@ import { hydrateStore, makePersistable } from 'mobx-persist-store';
 export class PostStore {
   historyPosts = [];
   favPosts = [];
-
+  openedReplyID = null;
   upvotedPosts = {};
 
   addHistoryPost = (v) => {
@@ -17,7 +17,13 @@ export class PostStore {
       .concat(item)
       .sort((a, b) => b.createTime - a.createTime);
   };
-
+  toggleReplyInput = (id) => {
+    if (this.openedReplyID === id) {
+      this.openedReplyID = null;
+    } else {
+      this.openedReplyID = id;
+    }
+  };
   toggleFavPosts = (v) => {
     if (_.find(this.favPosts, { pid: v.pid })) {
       this.favPosts = _.filter(this.favPosts, (t) => t.pid !== v.pid);

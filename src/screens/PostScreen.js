@@ -1,4 +1,3 @@
-import React from 'react';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import Feather from '@expo/vector-icons/Feather';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
@@ -16,7 +15,7 @@ import { observer } from 'mobx-react-lite';
 import PollView from '~/components/PollView';
 import { SpecialScrollView } from 'react-native-scroll-to-element';
 import RelatedPostList from '~/components/RelatedPostList';
-import UpvoteButton from '~/components/UpvoteButton';
+import ReplyButton from '~/components/ReplyButton';
 
 export default PostScreen = observer(({ route, navigation }) => {
   const { tw } = useTailwind();
@@ -73,6 +72,9 @@ export default PostScreen = observer(({ route, navigation }) => {
           </View>
           <PostMarkdown text={data.item.text} style={tw`mt-2 px-2`} />
           <PollView poll={data.item?.poll} />
+          <View style={tw`mt-1 mx-3`}>
+            <ReplyButton item={data.item} />
+          </View>
           {data.item.comments.map((it) => {
             return <Comment item={it} key={it.id} idx={0} cid={cid} />;
           })}

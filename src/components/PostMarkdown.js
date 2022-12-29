@@ -9,7 +9,7 @@ export default function PostMarkdown({ text, ...restPros }) {
   const navigation = useNavigation();
   const { tw } = useTailwind();
   if (_.isEmpty(text)) {
-    return <View style={tw`h-5`} />;
+    return <View style={tw`h-3`} />;
   }
   return (
     <Markdown

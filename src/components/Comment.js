@@ -5,6 +5,7 @@ import useTailwind from '~/hooks/useTailwind';
 import PostDesc from './PostDesc';
 import PostMarkdown from './PostMarkdown';
 import { SpecialView } from 'react-native-scroll-to-element';
+import ReplyButton from './ReplyButton';
 
 export default function Comment({ item, idx, cid }) {
   const { tw } = useTailwind();
@@ -26,6 +27,7 @@ export default function Comment({ item, idx, cid }) {
       />
       <View style={tw`${hide ? 'hidden' : ''}`}>
         <PostMarkdown text={item.text} style={tw`mt-1 pr-1`} />
+        <ReplyButton item={item} />
         {idx <= 8 ? (
           item.comments.map((it) => {
             return <Comment key={it.id} item={it} idx={idx + 1} cid={cid} />;
@@ -38,7 +40,7 @@ export default function Comment({ item, idx, cid }) {
                 id: item.id,
               });
             }}>
-            <Text style={tw`text-center font-bold text-neutral-500`}>view replies</Text>
+            <Text style={tw`text-center font-bold text-neutral-500 dark:text-neutral-400`}>view replies</Text>
           </TouchableOpacity>
         )}
       </View>

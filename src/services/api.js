@@ -5,7 +5,7 @@ import { ITEMS, ITEM_FULL, TOP_ITEMS, RELATED_ITEMS, ITEM_SEARCH } from '~/fragm
 import { SUB_ITEMS } from '~/fragments/subs';
 import { USER_FULL, TOP_USERS, USER_SEARCH, ME_SSR } from '~/fragments/users';
 import { MORE_FLAT_COMMENTS, TOP_COMMENTS } from '~/fragments/comments';
-import { TIP_MUTATION } from '~/fragments/mutations';
+import { TIP_MUTATION, CREAT_COMMENT } from '~/fragments/mutations';
 const topKeyMap = {
   posts: {
     query: TOP_ITEMS,
@@ -51,4 +51,5 @@ export const StackerNews = {
     );
   },
   tip: (v) => useGraphQuery(['tip'], TIP_MUTATION, v, { plain: true }),
+  createComment: (v) => useGraphQuery(['create-comment'], CREAT_COMMENT, v, { plain: true }),
 };
