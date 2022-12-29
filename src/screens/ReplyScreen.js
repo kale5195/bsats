@@ -12,7 +12,6 @@ export default ReplyScreen = ({ navigation, route }) => {
 
   const onReply = async () => {
     const data = await StackerNews.createComment({ parentId: itemId, text: 'welcome' });
-    console.log(data);
     if (data?.errno === -1) {
       toast.show(data.msg, { type: 'danger' });
     } else {
