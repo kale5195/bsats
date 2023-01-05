@@ -26,6 +26,7 @@ import FavScreen from '~/screens/FavScreen';
 import { useStores } from '~/stores';
 import QRcodeScreen from '~/screens/QRcodeScreen';
 import LoginScreen from '~/screens/LoginScreen';
+import ReplyScreen from '~/screens/ReplyScreen';
 
 const Stack = createStackNavigator();
 
@@ -123,6 +124,7 @@ export default AppNavigator = observer(({}) => {
           })}
         />
         <Stack.Screen name="HistoryScreen" component={HistoryScreen} options={{ title: 'ReadHistory' }} />
+        <Stack.Screen name="ReplyScreen" component={ReplyScreen} options={{ title: 'Reply' }} />
         <Stack.Screen name="FavScreen" component={FavScreen} options={{ title: 'Favorite' }} />
         <Stack.Screen name="ProfileScreen" component={ProfileScreen} options={{ title: 'Profile' }} />
         <Stack.Screen name="QRcodeScreen" component={QRcodeScreen} options={{ title: 'QRcode' }} />

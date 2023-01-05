@@ -9,3 +9,7 @@ export const abbrNum = (n) => {
 export const fixedDecimal = (n, f) => {
   return Number.parseFloat(n).toFixed(f);
 };
+
+export const shortName = (name) => {
+  return name.length > 20 ? name.slice(0, 10) + '...' + name.slice(-5) : name;
+};

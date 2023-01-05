@@ -5,7 +5,7 @@ export class ProfileStore {
   token = undefined;
   username = undefined;
   get isLogin() {
-    return !!this.token;
+    return !!this.token && !!this.username;
   }
   get hasUsername() {
     return !!this.username;

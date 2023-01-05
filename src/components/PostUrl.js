@@ -12,12 +12,15 @@ export default function PostUrl({ url }) {
   }
   return (
     <FixedTouchableOpacity
+      style={tw`pr-2`}
       onPress={() => {
         navigation.push('ExternalLinkScreen', {
           url: url,
         });
       }}>
-      <Text style={tw`text-sky-600 text-xs`}>{getSourceNameFromUrl(url)}</Text>
+      <Text style={tw`text-sky-600 text-xs`} numberOfLines={1}>
+        {getSourceNameFromUrl(url)}
+      </Text>
     </FixedTouchableOpacity>
   );
 }

@@ -6,7 +6,7 @@ export function getSourceNameFromUrl(url) {
   }
   try {
     const urlObject = URL.parse(url);
-    return urlObject.hostname + urlObject.pathname?.slice(0, 5) + '...';
+    return urlObject.hostname + urlObject.pathname;
   } catch (err) {
     console.log(err);
     return null;

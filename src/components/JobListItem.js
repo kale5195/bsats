@@ -5,7 +5,6 @@ import useTailwind from '~/hooks/useTailwind';
 import PostDesc from '~/components/PostDesc';
 import PostUrl from '~/components/PostUrl';
 import FixedTouchableOpacity from './FixedTouchableOpacity';
-import { fromNowUTC } from '~/utils/dateUtils';
 import { timeSince } from '~/lib/time';
 
 export default function JobListItem({ item }) {
