@@ -121,14 +121,17 @@ export const TOP_USERS = gql`
 `;
 
 export const USER_FULL = gql`
-  ${USER_FIELDS}
-  ${ITEM_WITH_COMMENTS}
   query User($name: String!) {
     user(name: $name) {
-      ...UserFields
-      bio {
-        ...ItemWithComments
-      }
+      id
+      createdAt
+      name
+      nitems
+      ncomments
+      stacked
+      sats
+      photoId
+      bioId
     }
   }
 `;

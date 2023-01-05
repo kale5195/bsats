@@ -36,10 +36,10 @@ export const StackerNews = {
   search: (v) => useGraphInfiniteRequest(['search-list', v], ITEM_SEARCH, v, 'search', 'items', !_.isEmpty(v?.q)),
   subs: (v) => useGraphInfiniteRequest(['sub-list', v], SUB_ITEMS, v, 'SubRecent'),
   comments: (v) => useGraphInfiniteRequest(['comment-list', v], MORE_FLAT_COMMENTS, v, 'moreFlatComments', 'comments'),
-  post: (id) => useGraphQuery(['single-posts', id], ITEM_FULL, { id }),
+  post: (id) => useGraphQuery(['single-posts', `${id}`], ITEM_FULL, { id }, { enabled: Boolean(id) }),
   relatedPosts: (id, limit) => useGraphQuery(['related-posts', id], RELATED_ITEMS, { id, limit }),
   user: (name) => useGraphQuery(['user', name], USER_FULL, { name }),
-  me: () => useGraphQuery(['me'], ME_SSR),
+  me: () => useGraphQuery(['me'], ME_SSR, {}, { staleTime: 1000 * 5 }),
   getUser: (name) => useGraphQuery(['user', name], USER_FULL, { name }, { plain: true }),
   topItems: (key, v) => {
     return useGraphInfiniteRequest(

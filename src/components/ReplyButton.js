@@ -22,12 +22,12 @@ export default ReplyButton = observer(({ item }) => {
     if (data?.errno === -1) {
       toast.show(data.msg, { type: 'danger' });
     } else {
-      toast.show('success', { type: 'success' });
       await queryClient.invalidateQueries({ queryKey: ['single-posts', item.root?.id || item.id] });
+      postStore.toggleReplyInput(itemId);
+      setText('');
+      toast.show('success', { type: 'success' });
     }
     setLoading(false);
-    postStore.toggleReplyInput(itemId);
-    setText('');
   };
   const isExpanded = postStore.openedReplyID === itemId;
   return (

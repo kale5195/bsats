@@ -18,7 +18,7 @@ export default function customQuery(key, query, variables, options) {
     key,
     () =>
       request('https://stacker.news/api/graphql', query, variables).then((res) => {
-        // console.log('userGraphQuery', key);
+        //console.log('userGraphQuery', key);
         return res;
       }),
     {

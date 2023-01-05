@@ -72,7 +72,7 @@ export default PostScreen = observer(({ route, navigation }) => {
           </View>
           <PostMarkdown text={data.item.text} style={tw`mt-2 px-2`} />
           <PollView poll={data.item?.poll} />
-          <View style={tw`mt-1 mx-3`}>
+          <View style={tw`mt-1 mx-2`}>
             <ReplyButton item={data.item} />
           </View>
           {data.item.comments.map((it) => {
