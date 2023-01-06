@@ -31,6 +31,9 @@ export default function PostMarkdown({ text, ...restPros }) {
           const { src, alt } = node.attributes;
           return <ZoomImage key={node.key} url={src} />;
         },
+        blocklink: (node, children, parent, styles, onLinkPress) => {
+          return <View key={node.key}>{children}</View>;
+        },
         // link: (node, children, parent, styles, onLinkPress) => {
         //   return (
         //     <TouchableOpacity key={node.key} onPress={() => onLinkPress(node.attributes.href)}>
