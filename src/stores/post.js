@@ -24,6 +24,9 @@ export class PostStore {
       this.openedReplyID = id;
     }
   };
+  cancelReplyInput = () => {
+    this.openedReplyID = null;
+  };
   toggleFavPosts = (v) => {
     if (_.find(this.favPosts, { pid: v.pid })) {
       this.favPosts = _.filter(this.favPosts, (t) => t.pid !== v.pid);

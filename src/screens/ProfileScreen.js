@@ -1,5 +1,6 @@
 import { TabBar, TabView } from 'react-native-tab-view';
-import { Text, useWindowDimensions, View } from 'react-native';
+import { ScrollView, Text, useWindowDimensions, View } from 'react-native';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import useTailwind from '~/hooks/useTailwind';
 import CommentList from '~/components/CommentList';
 import PostList from '~/components/PostList';

@@ -91,6 +91,7 @@ export default AppNavigator = observer(({}) => {
           component={ExternalLinkScreen}
           options={({ route }) => ({
             title: '',
+            presentation: 'modal',
             headerRight: (props) => {
               return (
                 <TouchableOpacity

@@ -11,7 +11,7 @@ export default function ZoomImage({ url }) {
   return (
     <View>
       <TouchableOpacity onPress={() => setIsVisible(true)} style={tw`mt-1`}>
-        <AutoHeightImage width={300} source={{ uri: url }} />
+        <AutoHeightImage width={280} source={{ uri: url }} />
         {/* <Image style={tw`w-[300px] h-[100px]`} resizeMode="contain" source={{ uri: url }} /> */}
       </TouchableOpacity>
       <Modal visible={visible} transparent={true} onRequestClose={() => {}}>

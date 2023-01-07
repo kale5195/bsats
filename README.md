@@ -14,6 +14,7 @@ For android users, you can alsoe download the apk from releases.
 1. npm install -g expo-cli
 2. npm install
 3. eas build --profile development-simulator --platform ios
+4. eas build --profile development --platform android
 
 # Tech Stack
 

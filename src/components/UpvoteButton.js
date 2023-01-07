@@ -5,7 +5,7 @@ import { useToast } from 'react-native-toast-notifications';
 import useTailwind from '~/hooks/useTailwind';
 import Rainbow from '~/lib/rainbow';
 import { StackerNews } from '~/services/api';
-import React from 'react';
+import React, { useEffect } from 'react';
 
 const getColor = (meSats) => {
   if (!meSats) {
@@ -17,12 +17,19 @@ const getColor = (meSats) => {
 };
 
 const presets = [1, 10, 100, 1000];
-export default function UpvoteButton({ id, meSats = 0, size = 24, style, updateSats }) {
+export default function UpvoteButton({ id, meSats = 0, totalSats, size = 24, updateSats }) {
   const { tw } = useTailwind();
   const [visible, setVisible] = React.useState(false);
-  const [customSats, setCustomSats] = React.useState(10);
   const { data: meData } = StackerNews.me();
+  const [customSats, setCustomSats] = React.useState(10);
+
   const toast = useToast();
+
+  useEffect(() => {
+    if (meData?.me?.tipDefault) {
+      setCustomSats(meData.me.tipDefault);
+    }
+  }, [meData]);
 
   // TODO change to useStore
   const onTip = async (postId, sats) => {
@@ -34,13 +41,9 @@ export default function UpvoteButton({ id, meSats = 0, size = 24, style, updateS
     }
   };
   return (
-    <TouchableOpacity
-      onPress={() => onTip(id, meData?.tipDefault || 10)}
-      style={style}
-      onLongPress={() => {
-        setVisible(true);
-      }}>
+    <TouchableOpacity onPress={() => setVisible(true)} style={tw`flex-row items-center mr-1`}>
       <FontAwesome size={size} name="bolt" color={getColor(meSats)} />
+      <Text style={tw`ml-1 text-xs text-neutral-500`}>{totalSats} sats \</Text>
       <Modal
         visible={visible}
         transparent={true}
@@ -51,9 +54,9 @@ export default function UpvoteButton({ id, meSats = 0, size = 24, style, updateS
         <Pressable
           style={tw`flex-1 justify-center items-center bg-gray-100/40 dark:bg-transparent`}
           onPress={(event) => event.target == event.currentTarget && setVisible(false)}>
-          <View style={tw`bg-white dark:bg-gray-800 p-4 rounded h-[180px] w-[85%]`}>
-            <Text style={tw`text-sm font-bold mb-2 text-neutral-500 dark:text-neutral-200`}>Tip Amount</Text>
-            <View style={tw`flex flex-row items-center`}>
+          <View style={tw`bg-white dark:bg-gray-800 p-4 rounded h-[200px] w-[85%]`}>
+            <Text style={tw`text-sm font-bold text-neutral-500 dark:text-neutral-200`}>Tip Amount</Text>
+            <View style={tw`mt-4 flex flex-row items-center`}>
               <TextInput
                 keyboardType="numeric"
                 value={customSats.toString()}
@@ -87,7 +90,7 @@ export default function UpvoteButton({ id, meSats = 0, size = 24, style, updateS
                   onTip(id, customSats);
                   setVisible(false);
                 }}>
-                <Text style={tw` px-4 py-2 text-white font-bold`}>tip</Text>
+                <Text style={tw`px-6 py-2 text-white font-bold`}>tip</Text>
               </TouchableOpacity>
             </View>
           </View>
