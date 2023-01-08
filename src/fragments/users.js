@@ -51,6 +51,7 @@ export const ME_SSR = gql`
       noteJobIndicator
       lastCheckedJobs
     }
+    hasNewNotes
   }
 `;
 

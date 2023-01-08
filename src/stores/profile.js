@@ -4,6 +4,7 @@ import { hydrateStore, makePersistable } from 'mobx-persist-store';
 export class ProfileStore {
   token = undefined;
   username = undefined;
+  lastCheckedNotifications = 0;
   get isLogin() {
     return !!this.token && !!this.username;
   }
@@ -19,13 +20,22 @@ export class ProfileStore {
   logout = () => {
     this.token = undefined;
     this.username = undefined;
+    this.lastCheckedNotifications = 0;
   };
+
+  checkedNotifcation = () => {
+    this.lastCheckedNotifications = Date.now();
+  };
+
+  get shouldNotify() {
+    return Date.now() - this.lastCheckedNotifications >= 1000 * 6;
+  }
   constructor() {
     makeAutoObservable(this, {}, { autoBind: true });
 
     makePersistable(this, {
       name: 'profileStore',
-      properties: ['token', 'username'],
+      properties: ['token', 'username', 'lastCheckedNotifications'],
     });
   }
   hydrate = async () => {

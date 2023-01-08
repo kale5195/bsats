@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import * as NavigationBar from 'expo-navigation-bar';
-import { TouchableOpacity, Text, useColorScheme, Platform } from 'react-native';
+import { TouchableOpacity, Text, useColorScheme, Platform, View } from 'react-native';
 import * as WebBrowser from 'expo-web-browser';
 import * as Linking from 'expo-linking';
 import { observer } from 'mobx-react-lite';
@@ -27,6 +27,7 @@ import { useStores } from '~/stores';
 import QRcodeScreen from '~/screens/QRcodeScreen';
 import LoginScreen from '~/screens/LoginScreen';
 import ReplyScreen from '~/screens/ReplyScreen';
+import { StackerNews } from '~/services/api';
 
 const Stack = createStackNavigator();
 
@@ -91,7 +92,6 @@ export default AppNavigator = observer(({}) => {
           component={ExternalLinkScreen}
           options={({ route }) => ({
             title: '',
-            presentation: 'modal',
             headerRight: (props) => {
               return (
                 <TouchableOpacity
@@ -140,6 +140,9 @@ const BottomTab = createBottomTabNavigator();
 const BottomTabNavigator = () => {
   const { tw } = useTailwind();
   const navigation = useNavigation();
+  const { profileStore } = useStores();
+  const { data: meData } = StackerNews.me();
+
   return (
     <BottomTab.Navigator
       initialRouteName="HomeScreen"
@@ -173,7 +176,14 @@ const BottomTabNavigator = () => {
         options={{
           title: '',
           headerShown: false,
-          tabBarIcon: ({ color }) => <Ionicons size={30} style={tw`-mb-1`} name="person-outline" color={color} />,
+          tabBarIcon: ({ color }) => (
+            <View style={tw`relative`}>
+              {profileStore.shouldNotify && meData?.hasNewNotes && (
+                <View style={tw`bg-red-500 absolute top-0 right-0 rounded-full w-2 h-2`} />
+              )}
+              <Ionicons size={30} style={tw`-mb-1`} name="person-outline" color={color} />
+            </View>
+          ),
         }}
       />
     </BottomTab.Navigator>

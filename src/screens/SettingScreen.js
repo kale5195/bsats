@@ -5,24 +5,29 @@ import * as WebBrowser from 'expo-web-browser';
 import * as NavigationBar from 'expo-navigation-bar';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import Feather from '@expo/vector-icons/Feather';
-
+import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import { View, TouchableOpacity, ScrollView, Alert, Share } from 'react-native';
 import { useAppColorScheme } from 'twrnc';
 import Text from '~/components/common/Text';
 import { useStores } from '~/stores';
 import useTailwind from '~/hooks/useTailwind';
 import ProfileHeader from '~/components/ProfileHeader';
-import { useToast } from 'react-native-toast-notifications';
 import Container from '~/components/Container';
+import { StackerNews } from '~/services/api';
 
 export default SettingScreen = observer(({ navigation }) => {
-  const SettingItem = ({ icon, name, onPress }) => {
+  const SettingItem = ({ icon, name, onPress, hasNotification }) => {
     return (
       <TouchableOpacity
         style={tw`mx-4 py-4 border-t border-gray-200 dark:border-gray-900 flex-row items-center justify-between`}
         onPress={onPress}>
         <View style={tw`flex-row items-center`}>
-          <Feather name={icon} style={tw`text-xl dark:text-neutral-100`} />
+          {hasNotification ? (
+            <MaterialCommunityIcons name="bell-badge" style={tw`text-xl text-red-500`} />
+          ) : (
+            <Feather name={icon} style={tw`text-xl dark:text-neutral-100`} />
+          )}
+
           <Text style={tw`ml-2`}>{name}</Text>
         </View>
         <Feather name="arrow-right" style={tw`text-xl dark:text-neutral-100`} />
@@ -65,9 +70,8 @@ export default SettingScreen = observer(({ navigation }) => {
   });
   const { tw } = useTailwind();
   const { uiStore, profileStore, postStore } = useStores();
-  const toast = useToast();
   const [colorScheme, toggleColorScheme, setColorScheme] = useAppColorScheme(tw);
-
+  const { data: meData } = StackerNews.me();
   const openLoginPage = () => {
     navigation.push('LoginScreen');
   };
@@ -100,15 +104,28 @@ export default SettingScreen = observer(({ navigation }) => {
 
         <View style={tw`mt-2`}>
           {profileStore.isLogin && (
-            <SettingItem
-              icon="user"
-              name="My Profile"
-              onPress={() => {
-                navigation.push('ProfileScreen', {
-                  name: profileStore.username,
-                });
-              }}
-            />
+            <>
+              <SettingItem
+                icon="user"
+                name="My Profile"
+                onPress={() => {
+                  navigation.push('ProfileScreen', {
+                    name: profileStore.username,
+                  });
+                }}
+              />
+              <SettingItem
+                icon="bell"
+                name="Notifications"
+                hasNotification={profileStore.shouldNotify && meData?.hasNewNotes}
+                onPress={() => {
+                  profileStore.checkedNotifcation();
+                  navigation.push('ExternalLinkScreen', {
+                    url: `https://stacker.news/notifications`,
+                  });
+                }}
+              />
+            </>
           )}
           <SettingItem
             icon="star"
@@ -134,13 +151,6 @@ export default SettingScreen = observer(({ navigation }) => {
               ]);
             }}
           />
-          {/* <SettingItem
-            icon="thumbs-up"
-            name="Rate Bsats"
-            onPress={() => {
-              testCookie();
-            }}
-          /> */}
           <SettingItem icon="share-2" name="Share Bsats" onPress={onShare} />
           <SettingItem
             icon="alert-circle"

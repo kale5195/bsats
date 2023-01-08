@@ -27,41 +27,41 @@ export default PostScreen = observer(({ route, navigation }) => {
   // const { data: relatedData, isLoading: relatedDataLoading } = StackerNews.relatedPosts(id, 5);
   return (
     <Container>
-      <KeyboardAwareScrollView extraScrollHeight={20} enableOnAndroid={true}>
-        <View
-          style={tw`py-2 dark:bg-black bg-[#EFEFEF] flex-row justify-between items-center border-b border-zinc-200 dark:border-zinc-900`}>
-          <TouchableOpacity
-            style={tw`px-2 mr-4`}
-            onPress={() => {
-              navigation.goBack();
-            }}>
-            <Ionicons size={28} style={tw`text-gray-600 dark:text-neutral-100`} name="arrow-back-outline" />
-          </TouchableOpacity>
-          <View style={tw`flex-1 items-center`}>
-            <Text style={tw`dark:text-white font-medium text-base`}>Post</Text>
-          </View>
-          <View style={tw`flex-row items-center`}>
-            <TouchableOpacity
-              onPress={() => {
-                postStore.toggleFavPosts({ pid: id, title: data?.item?.title });
-              }}>
-              <FontAwesome
-                size={22}
-                style={tw`pr-2 text-gray-600 dark:text-neutral-100`}
-                name={`${postStore.isFavPost(id) ? 'star' : 'star-o'}`}
-              />
-            </TouchableOpacity>
-            <TouchableOpacity
-              onPress={() => {
-                // WebBrowser.openBrowserAsync(`https://stacker.news/items/${route.params.id}`);
-                navigation.push('ExternalLinkScreen', {
-                  url: `https://stacker.news/items/${route.params.id}`,
-                });
-              }}>
-              <Feather size={22} style={tw`px-2 text-gray-600 dark:text-neutral-100`} name="external-link" />
-            </TouchableOpacity>
-          </View>
+      <View
+        style={tw`py-2 dark:bg-black bg-[#EFEFEF] flex-row justify-between items-center border-b border-zinc-200 dark:border-zinc-900`}>
+        <TouchableOpacity
+          style={tw`px-2 mr-4`}
+          onPress={() => {
+            navigation.goBack();
+          }}>
+          <Ionicons size={28} style={tw`text-gray-600 dark:text-neutral-100`} name="arrow-back-outline" />
+        </TouchableOpacity>
+        <View style={tw`flex-1 items-center`}>
+          <Text style={tw`dark:text-white font-medium text-base`}>Post</Text>
         </View>
+        <View style={tw`flex-row items-center`}>
+          <TouchableOpacity
+            onPress={() => {
+              postStore.toggleFavPosts({ pid: id, title: data?.item?.title });
+            }}>
+            <FontAwesome
+              size={22}
+              style={tw`pr-2 text-gray-600 dark:text-neutral-100`}
+              name={`${postStore.isFavPost(id) ? 'star' : 'star-o'}`}
+            />
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => {
+              // WebBrowser.openBrowserAsync(`https://stacker.news/items/${route.params.id}`);
+              navigation.push('ExternalLinkScreen', {
+                url: `https://stacker.news/items/${route.params.id}`,
+              });
+            }}>
+            <Feather size={22} style={tw`px-2 text-gray-600 dark:text-neutral-100`} name="external-link" />
+          </TouchableOpacity>
+        </View>
+      </View>
+      <KeyboardAwareScrollView extraScrollHeight={65} enableOnAndroid={true}>
         {isLoading ? (
           <ActivityIndicator color="#c9c9c9" style={tw`mt-2`} size="large" />
         ) : (

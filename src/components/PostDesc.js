@@ -15,18 +15,18 @@ export default PostDesc = observer(
     const navigation = useNavigation();
     const { postStore } = useStores();
 
-    const meSats = postStore.upvotedPosts[item.id] || 0;
+    const storeMeSats = postStore.upvotedPosts[item.id] || 0;
     const itemMeSats = item.mine ? 0 : item.meSats;
     const updateSats = (voteSats) => {
       postStore.setUpvotedPosts(item.id, voteSats);
     };
     return (
       <View style={tw`relative mt-1 pr-1`}>
-        <View style={tw`flex-row items-center flex-wrap`}>
+        <View style={tw`flex-row items-center flex-wrap pr-2`}>
           <UpvoteButton
             id={item.id}
-            meSats={itemMeSats || meSats}
-            totalSats={abbrNum(item.sats - itemMeSats + meSats)}
+            meSats={itemMeSats || storeMeSats}
+            totalSats={abbrNum(itemMeSats > 0 ? item.sats : item.sats + storeMeSats)}
             size={16}
             updateSats={updateSats}
           />
