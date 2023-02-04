@@ -1,6 +1,6 @@
 import React from 'react';
 import { TabView, TabBar } from 'react-native-tab-view';
-import { View, Text, useWindowDimensions } from 'react-native';
+import { View, Text, useWindowDimensions, TouchableOpacity } from 'react-native';
 import useTailwind from '~/hooks/useTailwind';
 import { observer } from 'mobx-react-lite';
 import Container from '~/components/Container';
@@ -8,6 +8,7 @@ import PostList from '~/components/PostList';
 import TopList from '~/components/TopList';
 import { useStores } from '~/stores';
 import JobList from '~/components/JobList';
+import PublishButton from '~/components/PublishButton';
 
 const renderScene = ({ route }) => {
   switch (route.key) {
@@ -24,7 +25,7 @@ const renderScene = ({ route }) => {
   }
 };
 
-export default HomeScreen = observer(() => {
+export default HomeScreen = observer(({ navigation }) => {
   const layout = useWindowDimensions();
 
   const { tw } = useTailwind();
@@ -57,7 +58,7 @@ export default HomeScreen = observer(() => {
   ]);
 
   return (
-    <Container style={tw`-mb-[100px]`}>
+    <Container style={tw`-mb-[100px] relative`}>
       <TabView
         lazy
         renderLazyPlaceholder={() => {}}
@@ -71,6 +72,7 @@ export default HomeScreen = observer(() => {
         }}
         initialLayout={{ width: layout.width }}
       />
+      <PublishButton navigation={navigation} />
     </Container>
   );
 });

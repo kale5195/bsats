@@ -67,8 +67,8 @@ export default SearchScreen = observer(() => {
           value={content}
           clearButtonMode="always"
         />
-        <TouchableOpacity onPress={onSearchSubmit}>
-          <Text style={tw`font-medium w-[60px] text-center text-base text-amber-500 dark:text-amber-300`}>Search</Text>
+        <TouchableOpacity onPress={onSearchSubmit} style={tw`bg-yellow-500 rounded-md`}>
+          <Text style={tw`w-[70px] py-1 px-2 text-center text-base text-white`}>Search</Text>
         </TouchableOpacity>
       </View>
       <View style={tw`flex-row justify-between px-2 items-center py-2 border-b border-gray-200 dark:border-gray-800`}>
