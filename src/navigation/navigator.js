@@ -28,7 +28,6 @@ import QRcodeScreen from '~/screens/QRcodeScreen';
 import LoginScreen from '~/screens/LoginScreen';
 import ReplyScreen from '~/screens/ReplyScreen';
 import { StackerNews } from '~/services/api';
-import NostrScreen from '~/screens/NostrScreen';
 
 const Stack = createStackNavigator();
 
@@ -169,15 +168,6 @@ const BottomTabNavigator = () => {
           title: 'Search',
           headerShown: true,
           tabBarIcon: ({ color }) => <Ionicons size={30} style={tw`-mb-1`} name="search" color={color} />,
-        }}
-      />
-      <BottomTab.Screen
-        name="NostrScreen"
-        component={NostrScreen}
-        options={{
-          title: 'Nostr',
-          headerShown: true,
-          tabBarIcon: ({ color }) => <Ionicons size={30} style={tw`-mb-1`} name="logo-bitcoin" color={color} />,
         }}
       />
       <BottomTab.Screen
