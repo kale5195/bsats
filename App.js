@@ -1,6 +1,8 @@
 import 'expo-dev-client';
 import 'text-encoding';
 import { useEffect, useCallback } from 'react';
+import { decode, encode } from 'base-64';
+import { polyfillWebCrypto } from 'expo-standard-web-crypto';
 import * as SplashScreen from 'expo-splash-screen';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { ToastProvider } from 'react-native-toast-notifications';
@@ -13,7 +15,12 @@ import { BottomSheetModalProvider } from '@gorhom/bottom-sheet';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { NostrProvider } from 'nostr-react';
 
-const relayUrls = ['wss://nostr-pub.wellorder.net', 'wss://relay.nostr.ch'];
+// Polyfill for base64
+if (!global.btoa) global.btoa = encode;
+if (!global.atob) global.atob = decode;
+
+const relayUrls = ['wss://relay.snort.social', 'wss://relay.nostr.ch'];
+polyfillWebCrypto();
 
 export default function App() {
   const startApp = useCallback(async () => {
@@ -28,7 +35,7 @@ export default function App() {
 
   return (
     <SafeAreaProvider>
-      <NostrProvider relayUrls={relayUrls} debug={true}>
+      <NostrProvider relayUrls={relayUrls} debug={false}>
         <GestureHandlerRootView style={{ flex: 1 }}>
           <BottomSheetModalProvider>
             <StoresProvider>
