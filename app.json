@@ -2,7 +2,7 @@
   "expo": {
     "name": "Bsats",
     "slug": "bsats",
-    "version": "1.4.0",
+    "version": "1.5.0",
     "orientation": "portrait",
     "scheme": "bsats",
     "icon": "./assets/icon.png",
@@ -20,11 +20,11 @@
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "xyz.bsats.app",
-      "buildNumber": "1.4.0"
+      "buildNumber": "1.5.0"
     },
     "android": {
       "package": "xyz.bsats.app",
-      "versionCode": 11
+      "versionCode": 12
     },
     "web": {
       "favicon": "./assets/favicon.png"
