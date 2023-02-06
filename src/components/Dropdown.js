@@ -10,7 +10,7 @@ export default function Dropdown({ cat, data, defaultValue, setParams, width = 9
       defaultValue={defaultValue}
       buttonStyle={tw`bg-white dark:bg-gray-800 h-[28px] w-[${width}px] rounded-md border border-gray-300 dark:border-gray-700`}
       buttonTextStyle={tw`text-sm dark:text-neutral-100`}
-      dropdownStyle={tw`bg-white dark:bg-gray-800`}
+      dropdownStyle={tw`bg-white dark:bg-gray-800 rounded`}
       rowStyle={tw`h-[40px] dark:bg-gray-800 `}
       rowTextStyle={tw`bg-white text-sm dark:bg-gray-800 dark:text-neutral-100`}
       renderDropdownIcon={(isOpened) => {

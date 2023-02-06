@@ -1,4 +1,4 @@
-import { ActivityIndicator, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { ActivityIndicator, Text, TouchableOpacity, View } from 'react-native';
 import useTailwind from '~/hooks/useTailwind';
 import { useState } from 'react';
 import { observer } from 'mobx-react-lite';
@@ -6,6 +6,7 @@ import { useStores } from '~/stores';
 import { StackerNews } from '~/services/api';
 import { useToast } from 'react-native-toast-notifications';
 import { queryClient } from '~/services/queryClient';
+import TextInput from './common/TextInput';
 
 export default ReplyButton = observer(({ item }) => {
   const { tw } = useTailwind();
@@ -50,14 +51,7 @@ export default ReplyButton = observer(({ item }) => {
           </View>
         ) : (
           <View style={tw`mr-2 mb-4`}>
-            <TextInput
-              style={tw`bg-white dark:bg-gray-800 dark:text-gray-200 flex-1 p-2 my-2 rounded border border-gray-300 dark:border-gray-600`}
-              placeholderTextColor="#999"
-              multiline
-              onChange={(e) => setText(e.nativeEvent.text)}
-              placeholder="Please input content"
-              clearButtonMode="always"
-            />
+            <TextInput style={tw`flex-1 my-2`} onChangeText={setText} value={text} placeholder="Please input content" />
             <View style={tw`flex flex-row justify-end mt-2`}>
               <TouchableOpacity onPress={onReply} style={tw`rounded bg-yellow-500 w-[60px] mr-2`}>
                 <Text style={tw`text-white text-center py-1 font-semibold`}>Reply</Text>

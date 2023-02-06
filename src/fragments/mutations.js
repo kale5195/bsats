@@ -18,3 +18,19 @@ export const CREAT_COMMENT = gql`
     }
   }
 `;
+
+export const CREATE_LINK = gql`
+  mutation upsertLink($id: ID, $title: String!, $url: String!, $boost: Int, $forward: String) {
+    upsertLink(id: $id, title: $title, url: $url, boost: $boost, forward: $forward) {
+      id
+    }
+  }
+`;
+
+export const CREAT_DISCUSSION = gql`
+  mutation upsertDiscussion($id: ID, $title: String!, $text: String, $boost: Int, $forward: String) {
+    upsertDiscussion(id: $id, title: $title, text: $text, boost: $boost, forward: $forward) {
+      id
+    }
+  }
+`;

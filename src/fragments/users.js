@@ -133,6 +133,7 @@ export const USER_FULL = gql`
       sats
       photoId
       bioId
+      nostrPubkey
     }
   }
 `;
