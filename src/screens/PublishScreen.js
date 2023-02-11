@@ -24,7 +24,7 @@ export default PublishScreen = ({ navigation, route }) => {
         toast.show('URL should not be empty', { type: 'danger' });
         return;
       }
-      const data = await StackerNews.createLink({ title: title, url: url });
+      const data = await StackerNews.createLink({ title: title.trim(), url: url.trim() });
       if (data?.errno === -1) {
         toast.show(data.msg, { type: 'danger' });
       } else {
@@ -33,7 +33,7 @@ export default PublishScreen = ({ navigation, route }) => {
         });
       }
     } else if (type === 'discussion') {
-      const data = await StackerNews.createDiscussion({ title: title, text: text });
+      const data = await StackerNews.createDiscussion({ title: title.trim(), text: text.trim() });
       if (data?.errno === -1) {
         toast.show(data.msg, { type: 'danger' });
       } else {

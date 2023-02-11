@@ -42,7 +42,7 @@ export default PostScreen = observer(({ route, navigation }) => {
         <View style={tw`flex-row items-center`}>
           <TouchableOpacity
             onPress={() => {
-              postStore.toggleFavPosts({ pid: id, title: data?.item?.title });
+              postStore.toggleFavPosts({ pid: id, title: data?.item?.title?.trim() });
             }}>
             <FontAwesome
               size={22}
@@ -67,7 +67,7 @@ export default PostScreen = observer(({ route, navigation }) => {
         ) : (
           <SpecialScrollView scrollToOverflowEnabled={true} style={tw`flex-1 p-2`} scrollIndicatorInsets={{ right: 1 }}>
             <Text style={tw`text-base text-neutral-800 dark:text-gray-50 font-semibold px-2`}>
-              {data.item.title?.slice(0, 128)}
+              {data.item.title?.trim()?.slice(0, 128)}
             </Text>
             <View style={tw`px-2`}>
               <PostUrl url={data.item.url} />

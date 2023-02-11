@@ -5,7 +5,7 @@ import { ITEMS, ITEM_FULL, TOP_ITEMS, RELATED_ITEMS, ITEM_SEARCH } from '~/fragm
 import { SUB_ITEMS } from '~/fragments/subs';
 import { USER_FULL, TOP_USERS, USER_SEARCH, ME_SSR } from '~/fragments/users';
 import { MORE_FLAT_COMMENTS, TOP_COMMENTS } from '~/fragments/comments';
-import { TIP_MUTATION, CREAT_COMMENT, CREATE_LINK, CREAT_DISCUSSION } from '~/fragments/mutations';
+import { TIP_MUTATION, CREAT_COMMENT, CREATE_LINK, CREAT_DISCUSSION, CREATE_INVOICE } from '~/fragments/mutations';
 const topKeyMap = {
   posts: {
     query: TOP_ITEMS,
@@ -54,4 +54,5 @@ export const StackerNews = {
   createComment: (v) => useGraphQuery(['create-comment'], CREAT_COMMENT, v, { plain: true }),
   createLink: (v) => useGraphQuery(['create-link'], CREATE_LINK, v, { plain: true }),
   createDiscussion: (v) => useGraphQuery(['create-discussion'], CREAT_DISCUSSION, v, { plain: true }),
+  createInvoice: (v) => useGraphQuery(['create-invoice'], CREATE_INVOICE, v, { plain: true }),
 };

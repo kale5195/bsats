@@ -18,7 +18,9 @@ export default function PostListItem({ item }) {
           id: item.id,
         });
       }}>
-      <Text style={tw`text-base text-neutral-800 font-semibold dark:text-gray-50`}>{item.title?.slice(0, 128)}</Text>
+      <Text style={tw`text-base text-neutral-800 font-semibold dark:text-gray-50`}>
+        {item.title?.trim()?.slice(0, 128)}
+      </Text>
       <PostUrl url={item.url} />
       <PostDesc item={item} />
     </FixedTouchableOpacity>

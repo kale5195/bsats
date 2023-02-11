@@ -28,6 +28,8 @@ import QRcodeScreen from '~/screens/QRcodeScreen';
 import LoginScreen from '~/screens/LoginScreen';
 import PublishScreen from '~/screens/PublishScreen';
 import { StackerNews } from '~/services/api';
+import WalletScreen from '~/screens/WalletScreen';
+import WalletReceiveScreen from '~/screens/WalletReceiveScreen';
 
 const Stack = createStackNavigator();
 
@@ -129,6 +131,8 @@ export default AppNavigator = observer(({}) => {
         <Stack.Screen name="FavScreen" component={FavScreen} options={{ title: 'Favorite' }} />
         <Stack.Screen name="ProfileScreen" component={ProfileScreen} options={{ title: 'Profile' }} />
         <Stack.Screen name="QRcodeScreen" component={QRcodeScreen} options={{ title: 'QRcode' }} />
+        <Stack.Screen name="WalletScreen" component={WalletScreen} options={{ title: 'Wallet' }} />
+        <Stack.Screen name="WalletReceiveScreen" component={WalletReceiveScreen} options={{ title: 'Receive' }} />
         <Stack.Screen name="LoginScreen" component={LoginScreen} options={{ title: 'Login' }} />
       </Stack.Navigator>
     </NavigationContainer>

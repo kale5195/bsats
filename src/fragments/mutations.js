@@ -34,3 +34,11 @@ export const CREAT_DISCUSSION = gql`
     }
   }
 `;
+
+export const CREATE_INVOICE = gql`
+  mutation createInvoice($amount: Int!) {
+    createInvoice(amount: $amount) {
+      id
+    }
+  }
+`;
