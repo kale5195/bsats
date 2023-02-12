@@ -9,7 +9,7 @@ export default QRcodeScreen = ({ route }) => {
   const { name } = route.params;
   const lnurlp = encodeLNUrl(new URL(`https://stacker.news/.well-known/lnurlp/${name}`));
   return (
-    <View style={tw`mt-10 p-8 dark:bg-gray-800`}>
+    <View style={tw`mt-10 p-8`}>
       <TouchableOpacity style={tw`mt-4 bg-amber-300 py-3 rounded-md `}>
         <Text style={tw`text-base text-black font-bold text-center`} numberOfLines={1}>
           ⚡{name}@stacker.news

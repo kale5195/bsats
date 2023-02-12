@@ -1,4 +1,4 @@
-import { gql } from '@apollo/client';
+import { gql } from 'graphql-request';
 import { ITEM_FIELDS } from './items';
 import { USER_FIELDS } from './users';
 
@@ -30,11 +30,7 @@ export const WITHDRAWL = gql`
 
 export const WALLET_HISTORY = gql`
   ${ITEM_FIELDS}
-  ${USER_FIELDS}
   query WalletHistory($cursor: String, $inc: String) {
-    me {
-      ...UserFields
-    }
     walletHistory(cursor: $cursor, inc: $inc) {
       facts {
         id

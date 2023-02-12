@@ -114,13 +114,13 @@ export default SettingScreen = observer(({ navigation }) => {
                   });
                 }}
               />
-              {/* <SettingItem
+              <SettingItem
                 icon="credit-card"
                 name="Wallet"
                 onPress={() => {
                   navigation.push('WalletScreen');
                 }}
-              /> */}
+              />
               <SettingItem
                 icon="bell"
                 name="Notifications"

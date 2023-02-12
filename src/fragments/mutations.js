@@ -39,6 +39,11 @@ export const CREATE_INVOICE = gql`
   mutation createInvoice($amount: Int!) {
     createInvoice(amount: $amount) {
       id
+      bolt11
+      satsReceived
+      cancelled
+      confirmedAt
+      expiresAt
     }
   }
 `;
