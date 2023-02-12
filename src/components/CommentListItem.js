@@ -1,6 +1,7 @@
 import React from 'react';
-import { View, Text } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { Text, View } from 'react-native';
+
 import useTailwind from '~/hooks/useTailwind';
 import PostDesc from '~/components/PostDesc';
 import FixedTouchableOpacity from './FixedTouchableOpacity';

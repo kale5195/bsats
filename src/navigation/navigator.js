@@ -1,35 +1,35 @@
 import React, { useEffect } from 'react';
-import * as NavigationBar from 'expo-navigation-bar';
-import { TouchableOpacity, Text, useColorScheme, Platform, View } from 'react-native';
-import * as WebBrowser from 'expo-web-browser';
 import * as Linking from 'expo-linking';
-import { observer } from 'mobx-react-lite';
+import * as NavigationBar from 'expo-navigation-bar';
 import { StatusBar } from 'expo-status-bar';
+import * as WebBrowser from 'expo-web-browser';
+import FontistoIcons from '@expo/vector-icons/Fontisto';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
-import FontistoIcons from '@expo/vector-icons/Fontisto';
-
-import { NavigationContainer, DefaultTheme, DarkTheme, useNavigation } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
-import { useAppColorScheme } from 'twrnc';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { DarkTheme, DefaultTheme, NavigationContainer, useNavigation } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import { observer } from 'mobx-react-lite';
+import { Platform, Text, TouchableOpacity, View, useColorScheme } from 'react-native';
+import { useAppColorScheme } from 'twrnc';
 
+import useTailwind from '~/hooks/useTailwind';
+import { StackerNews } from '~/services/api';
+import { useStores } from '~/stores';
 import ExternalLinkScreen from '~/screens/ExternalLinkScreen';
+import FavScreen from '~/screens/FavScreen';
+import HistoryScreen from '~/screens/HistoryScreen';
 import HomeScreen from '~/screens/HomeScreen';
+import LoginScreen from '~/screens/LoginScreen';
 import PostScreen from '~/screens/PostScreen';
 import ProfileScreen from '~/screens/ProfileScreen';
-import SettingScreen from '~/screens/SettingScreen';
-import SearchScreen from '~/screens/SearchScreen';
-import useTailwind from '~/hooks/useTailwind';
-import HistoryScreen from '~/screens/HistoryScreen';
-import FavScreen from '~/screens/FavScreen';
-import { useStores } from '~/stores';
-import QRcodeScreen from '~/screens/QRcodeScreen';
-import LoginScreen from '~/screens/LoginScreen';
 import PublishScreen from '~/screens/PublishScreen';
-import { StackerNews } from '~/services/api';
-import WalletScreen from '~/screens/WalletScreen';
+import QRcodeScreen from '~/screens/QRcodeScreen';
+import SearchScreen from '~/screens/SearchScreen';
+import SettingScreen from '~/screens/SettingScreen';
 import WalletReceiveScreen from '~/screens/WalletReceiveScreen';
+import WalletScreen from '~/screens/WalletScreen';
+
 // import WalletSendScreen from '~/screens/WalletSendScreen';
 
 const Stack = createStackNavigator();

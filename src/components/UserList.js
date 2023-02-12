@@ -1,4 +1,5 @@
 import { ActivityIndicator, ScrollView } from 'react-native';
+
 import useTailwind from '~/hooks/useTailwind';
 import { StackerNews } from '~/services/api';
 import UserListItem from './UserListItem';

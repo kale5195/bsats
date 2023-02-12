@@ -1,7 +1,7 @@
 import React from 'react';
 import { Pressable } from 'react-native';
 
-var numTaps = 0;
+let numTaps = 0;
 
 const MultiTap = (props) => {
   const {

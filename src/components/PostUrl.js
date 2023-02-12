@@ -1,7 +1,8 @@
-import { Text, TouchableOpacity, View } from 'react-native';
 import * as WebBrowser from 'expo-web-browser';
-import useTailwind from '~/hooks/useTailwind';
 import { useNavigation } from '@react-navigation/native';
+import { Text, TouchableOpacity, View } from 'react-native';
+
+import useTailwind from '~/hooks/useTailwind';
 import { getSourceNameFromUrl } from '~/utils/textUtils';
 import FixedTouchableOpacity from './FixedTouchableOpacity';
 

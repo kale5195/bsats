@@ -1,5 +1,5 @@
-import { useQuery } from 'react-query';
 import { request } from 'graphql-request';
+import { useQuery } from 'react-query';
 
 export default function customQuery(key, query, variables, options) {
   if (options && options.plain) {

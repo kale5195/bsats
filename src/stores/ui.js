@@ -1,6 +1,6 @@
-import { Appearance } from 'react-native';
 import { makeAutoObservable } from 'mobx';
 import { hydrateStore, makePersistable } from 'mobx-persist-store';
+import { Appearance } from 'react-native';
 
 export class UIStore {
   appearance = 'auto'; // light auto dark

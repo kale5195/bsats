@@ -1,12 +1,13 @@
 import React from 'react';
-import { View, Button, Text } from 'react-native';
-import { useStores } from '~/stores';
-import useTailwind from '~/hooks/useTailwind';
-import FixedTouchableOpacity from '~/components/FixedTouchableOpacity';
 import { FlashList } from '@shopify/flash-list';
 import { observer } from 'mobx-react-lite';
+import { Button, Text, View } from 'react-native';
 
-export default FavScreen = observer(({ navigation }) => {
+import useTailwind from '~/hooks/useTailwind';
+import { useStores } from '~/stores';
+import FixedTouchableOpacity from '~/components/FixedTouchableOpacity';
+
+function FavScreen({ navigation }) {
   const { tw } = useTailwind();
   const { postStore } = useStores();
 
@@ -30,4 +31,6 @@ export default FavScreen = observer(({ navigation }) => {
       data={postStore.favPosts.slice()}
     />
   );
-});
+}
+
+export default observer(FavScreen);

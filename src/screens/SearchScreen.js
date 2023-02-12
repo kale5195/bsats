@@ -1,12 +1,13 @@
 import React from 'react';
 import { observer } from 'mobx-react-lite';
-import { View, Text, TextInput, TouchableOpacity } from 'react-native';
+import { Text, TextInput, TouchableOpacity, View } from 'react-native';
+
 import useTailwind from '~/hooks/useTailwind';
 import { StackerNews } from '~/services/api';
-import CommonList from '~/components/CommonList';
-import PostItem from '~/components/PostListItem';
 import CommentItem from '~/components/CommentListItem';
+import CommonList from '~/components/CommonList';
 import Dropdown from '~/components/Dropdown';
+import PostItem from '~/components/PostListItem';
 import UserList from '~/components/UserList';
 
 const searchData = ['posts', 'comments', 'users'];
@@ -39,7 +40,7 @@ const CommonSearchList = ({ params }) => {
     />
   );
 };
-export default SearchScreen = observer(() => {
+function SearchScreen() {
   const { tw } = useTailwind();
   const [params, setParams] = React.useState({ search: 'posts', by: 'match', for: 'day', q: '' });
   const [content, setContent] = React.useState('');
@@ -86,4 +87,6 @@ export default SearchScreen = observer(() => {
         (params?.search === 'users' ? <UserList username={params.q} /> : <CommonSearchList params={params} />)}
     </View>
   );
-});
+}
+
+export default observer(SearchScreen);

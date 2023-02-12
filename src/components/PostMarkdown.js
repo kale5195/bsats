@@ -1,8 +1,9 @@
-import _ from 'lodash';
 import Markdown, { MarkdownIt } from '@flowchase/react-native-markdown-display';
 import { useNavigation } from '@react-navigation/native';
+import _ from 'lodash';
+import { Text, TouchableOpacity, View } from 'react-native';
+
 import useTailwind from '~/hooks/useTailwind';
-import { View, Text, TouchableOpacity } from 'react-native';
 import ZoomImage from './ZoomImage';
 
 export default function PostMarkdown({ text, ...restPros }) {

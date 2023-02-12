@@ -1,13 +1,14 @@
 import React from 'react';
 import Ionicons from '@expo/vector-icons/Ionicons';
-import { View, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { TouchableOpacity, View } from 'react-native';
+
 import useTailwind from '~/hooks/useTailwind';
+import { timeSince } from '~/lib/time';
 import PostDesc from '~/components/PostDesc';
 import PostUrl from '~/components/PostUrl';
 import FixedTouchableOpacity from './FixedTouchableOpacity';
 import Text from './common/Text';
-import { timeSince } from '~/lib/time';
 
 const getDescriptionFromType = (item) => {
   if (item.description) {

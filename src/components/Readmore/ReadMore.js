@@ -1,6 +1,7 @@
-import React, { memo, useState, useEffect, useCallback } from 'react';
+import React, { memo, useCallback, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { StyleSheet, Text, View, LayoutAnimation, Platform, UIManager, TextPropTypes, Pressable } from 'react-native';
+import { LayoutAnimation, Platform, Pressable, StyleSheet, Text, TextPropTypes, UIManager, View } from 'react-native';
+
 import { getTextByChildren, insertAt, linesToCharacters } from './helper';
 
 if (Platform.OS === 'android') {

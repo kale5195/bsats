@@ -1,12 +1,14 @@
 import _ from 'lodash';
+
+import { MORE_FLAT_COMMENTS, TOP_COMMENTS } from '~/fragments/comments';
+import { ITEMS, ITEM_FULL, ITEM_SEARCH, RELATED_ITEMS, TOP_ITEMS } from '~/fragments/items';
+import { CREATE_INVOICE, CREATE_LINK, CREAT_COMMENT, CREAT_DISCUSSION, TIP_MUTATION } from '~/fragments/mutations';
+import { SUB_ITEMS } from '~/fragments/subs';
+import { ME_SSR, TOP_USERS, USER_FULL, USER_SEARCH } from '~/fragments/users';
+import { WALLET_HISTORY } from '~/fragments/wallet';
 import useGraphInfiniteRequest from '~/services/useGraphInfiniteRequest';
 import useGraphQuery from '~/services/useGraphQuery';
-import { ITEMS, ITEM_FULL, TOP_ITEMS, RELATED_ITEMS, ITEM_SEARCH } from '~/fragments/items';
-import { SUB_ITEMS } from '~/fragments/subs';
-import { USER_FULL, TOP_USERS, USER_SEARCH, ME_SSR } from '~/fragments/users';
-import { MORE_FLAT_COMMENTS, TOP_COMMENTS } from '~/fragments/comments';
-import { WALLET_HISTORY } from '~/fragments/wallet';
-import { TIP_MUTATION, CREAT_COMMENT, CREATE_LINK, CREAT_DISCUSSION, CREATE_INVOICE } from '~/fragments/mutations';
+
 const topKeyMap = {
   posts: {
     query: TOP_ITEMS,

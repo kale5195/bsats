@@ -1,11 +1,9 @@
-import React from 'react';
-import { View, Text, TouchableOpacity, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { Image, Text, TouchableOpacity, View } from 'react-native';
+
 import useTailwind from '~/hooks/useTailwind';
-import PostDesc from '~/components/PostDesc';
-import PostUrl from '~/components/PostUrl';
-import FixedTouchableOpacity from './FixedTouchableOpacity';
 import { timeSince } from '~/lib/time';
+import FixedTouchableOpacity from './FixedTouchableOpacity';
 
 export default function JobListItem({ item }) {
   const { tw } = useTailwind();

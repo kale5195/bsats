@@ -1,4 +1,5 @@
-import { View, Text } from 'react-native';
+import { Text, View } from 'react-native';
+
 import useTailwind from '~/hooks/useTailwind';
 
 export default function PollView({ poll }) {
@@ -13,7 +14,7 @@ export default function PollView({ poll }) {
         const w = parseInt(300 * per, 10) || 0;
         return (
           <View style={tw`relative flex-row justify-between items-center`} key={item.id}>
-            <View style={tw`absolute py-3 w-[${w}px] bg-black/9 dark:bg-white/20 mt-2 rounded`}></View>
+            <View style={tw`absolute py-3 w-[${w}px] bg-black/9 dark:bg-white/20 mt-2 rounded`} />
             <Text style={tw`p-2 dark:text-neutral-200`}>{item.option}</Text>
             {per > 0 && <Text style={tw`text-sm dark:text-neutral-200`}>{(per * 100).toFixed(1)}%</Text>}
           </View>

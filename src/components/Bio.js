@@ -1,4 +1,5 @@
-import { View, ScrollView, ActivityIndicator, Text } from 'react-native';
+import { ActivityIndicator, ScrollView, Text, View } from 'react-native';
+
 import useTailwind from '~/hooks/useTailwind';
 import { StackerNews } from '~/services/api';
 import Comment from './Comment';

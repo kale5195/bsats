@@ -1,8 +1,9 @@
 import React from 'react';
+
 import './_hydration';
-import { UIStore } from './ui';
-import { ProfileStore } from './profile';
 import { PostStore } from './post';
+import { ProfileStore } from './profile';
+import { UIStore } from './ui';
 
 class Stores {
   uiStore = new UIStore();

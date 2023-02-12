@@ -1,8 +1,10 @@
-import { View, Button, Text, TouchableOpacity } from 'react-native';
-import useTailwind from '~/hooks/useTailwind';
+import { dateToUnix, useNostrEvents } from 'nostr-react';
+import { Button, Text, TouchableOpacity, View } from 'react-native';
 import { useToast } from 'react-native-toast-notifications';
-import { useNostrEvents, dateToUnix } from 'nostr-react';
-export default NostrScreen = ({ navigation, route }) => {
+
+import useTailwind from '~/hooks/useTailwind';
+
+export default function NostrScreen({ navigation, route }) {
   const { tw } = useTailwind();
   const toast = useToast();
 
@@ -19,4 +21,4 @@ export default NostrScreen = ({ navigation, route }) => {
       </TouchableOpacity>
     </View>
   );
-};
+}

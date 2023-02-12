@@ -1,5 +1,5 @@
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Platform } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 const DEFAULT_TABBAR_HEIGHT = 49;
 const COMPACT_TABBAR_HEIGHT = 32;

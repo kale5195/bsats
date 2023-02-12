@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { View, TouchableOpacity, Text, Image, ActivityIndicator } from 'react-native';
+import { ActivityIndicator, Image, Text, TouchableOpacity, View } from 'react-native';
+
 import useTailwind from '~/hooks/useTailwind';
 import { StackerNews } from '~/services/api';
 

@@ -1,10 +1,11 @@
 import React, { Component, useState } from 'react';
-import { useRoute, useNavigation } from '@react-navigation/native';
-import { WebView } from 'react-native-webview';
-import useTailwind from '~/hooks/useTailwind';
-import { View } from 'react-native';
 import CookieManager from '@react-native-cookies/cookies';
+import { useNavigation, useRoute } from '@react-navigation/native';
+import { View } from 'react-native';
 import { useToast } from 'react-native-toast-notifications';
+import { WebView } from 'react-native-webview';
+
+import useTailwind from '~/hooks/useTailwind';
 import { useStores } from '~/stores';
 
 export default function LoginScreen({ navigation }) {

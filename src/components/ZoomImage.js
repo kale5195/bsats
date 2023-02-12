@@ -1,5 +1,5 @@
 import { useRef, useState } from 'react';
-import { Image, View, Modal, TouchableWithoutFeedback, Dimensions } from 'react-native';
+import { Dimensions, Image, Modal, TouchableWithoutFeedback, View } from 'react-native';
 import ImageViewer from 'react-native-image-zoom-viewer';
 
 import useTailwind from '~/hooks/useTailwind';

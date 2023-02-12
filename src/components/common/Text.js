@@ -1,4 +1,5 @@
 import { Text } from 'react-native';
+
 import useTailwind from '~/hooks/useTailwind';
 
 export default function CustomText({ children, style, ...props }) {

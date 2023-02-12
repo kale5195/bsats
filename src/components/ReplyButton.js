@@ -1,14 +1,15 @@
-import { ActivityIndicator, Text, TouchableOpacity, View } from 'react-native';
-import useTailwind from '~/hooks/useTailwind';
 import { useState } from 'react';
 import { observer } from 'mobx-react-lite';
-import { useStores } from '~/stores';
-import { StackerNews } from '~/services/api';
+import { ActivityIndicator, Text, TouchableOpacity, View } from 'react-native';
 import { useToast } from 'react-native-toast-notifications';
+
+import useTailwind from '~/hooks/useTailwind';
+import { StackerNews } from '~/services/api';
 import { queryClient } from '~/services/queryClient';
+import { useStores } from '~/stores';
 import TextInput from './common/TextInput';
 
-export default ReplyButton = observer(({ item }) => {
+function ReplyButton({ item }) {
   const { tw } = useTailwind();
   const { postStore } = useStores();
   const [text, setText] = useState('');
@@ -64,4 +65,6 @@ export default ReplyButton = observer(({ item }) => {
         ))}
     </View>
   );
-});
+}
+
+export default observer(ReplyButton);

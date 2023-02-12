@@ -1,10 +1,12 @@
+import URL from 'url';
 import React from 'react';
-import { View, TouchableOpacity, Text } from 'react-native';
-import useTailwind from '~/hooks/useTailwind';
-import { encodeLNUrl } from '~/lib/lnurl';
+import { Text, TouchableOpacity, View } from 'react-native';
 import QRCode from 'react-native-qrcode-svg';
 
-export default QRcodeScreen = ({ route }) => {
+import useTailwind from '~/hooks/useTailwind';
+import { encodeLNUrl } from '~/lib/lnurl';
+
+export default function QRcodeScreen({ route }) {
   const { tw } = useTailwind();
   const { name } = route.params;
   const lnurlp = encodeLNUrl(new URL(`https://stacker.news/.well-known/lnurlp/${name}`));
@@ -20,4 +22,4 @@ export default QRcodeScreen = ({ route }) => {
       </View>
     </View>
   );
-};
+}

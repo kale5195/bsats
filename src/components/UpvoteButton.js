@@ -1,11 +1,12 @@
-import { Modal, Pressable, Text, TextInput, TouchableOpacity, View } from 'react-native';
-import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
+import React, { useEffect } from 'react';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
+import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
+import { Modal, Pressable, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import { useToast } from 'react-native-toast-notifications';
+
 import useTailwind from '~/hooks/useTailwind';
 import Rainbow from '~/lib/rainbow';
 import { StackerNews } from '~/services/api';
-import React, { useEffect } from 'react';
 
 const getColor = (meSats) => {
   if (!meSats) {

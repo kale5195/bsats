@@ -1,13 +1,14 @@
 import React from 'react';
-import { View, TouchableOpacity } from 'react-native';
-import TextInput from '~/components/common/TextInput';
-import Text from '~/components/common/Text';
-import useTailwind from '~/hooks/useTailwind';
-import { useToast } from 'react-native-toast-notifications';
-import { StackerNews } from '~/services/api';
+import { TouchableOpacity, View } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import { useToast } from 'react-native-toast-notifications';
 
-export default PublishScreen = ({ navigation, route }) => {
+import Text from '~/components/common/Text';
+import TextInput from '~/components/common/TextInput';
+import useTailwind from '~/hooks/useTailwind';
+import { StackerNews } from '~/services/api';
+
+export default function PublishScreen({ navigation, route }) {
   const { tw } = useTailwind();
   const toast = useToast();
   const {
@@ -74,4 +75,4 @@ export default PublishScreen = ({ navigation, route }) => {
       </View>
     </KeyboardAwareScrollView>
   );
-};
+}

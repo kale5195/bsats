@@ -1,5 +1,5 @@
-import { useInfiniteQuery } from 'react-query';
 import { request } from 'graphql-request';
+import { useInfiniteQuery } from 'react-query';
 
 export default function useGraphInfiniteRequest(
   key,

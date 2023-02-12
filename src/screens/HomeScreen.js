@@ -1,14 +1,15 @@
 import React from 'react';
-import { TabView, TabBar } from 'react-native-tab-view';
-import { View, Text, useWindowDimensions, TouchableOpacity } from 'react-native';
-import useTailwind from '~/hooks/useTailwind';
 import { observer } from 'mobx-react-lite';
-import Container from '~/components/Container';
-import PostList from '~/components/PostList';
-import TopList from '~/components/TopList';
+import { Text, TouchableOpacity, View, useWindowDimensions } from 'react-native';
+import { TabBar, TabView } from 'react-native-tab-view';
+
+import useTailwind from '~/hooks/useTailwind';
 import { useStores } from '~/stores';
+import Container from '~/components/Container';
 import JobList from '~/components/JobList';
+import PostList from '~/components/PostList';
 import PublishButton from '~/components/PublishButton';
+import TopList from '~/components/TopList';
 
 const renderScene = ({ route }) => {
   switch (route.key) {
@@ -25,7 +26,7 @@ const renderScene = ({ route }) => {
   }
 };
 
-export default HomeScreen = observer(({ navigation }) => {
+function HomeScreen({ navigation }) {
   const layout = useWindowDimensions();
 
   const { tw } = useTailwind();
@@ -75,4 +76,6 @@ export default HomeScreen = observer(({ navigation }) => {
       <PublishButton navigation={navigation} />
     </Container>
   );
-});
+}
+
+export default observer(HomeScreen);

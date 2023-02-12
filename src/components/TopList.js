@@ -1,12 +1,13 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { Text, View } from 'react-native';
+
 import useTailwind from '~/hooks/useTailwind';
 import { StackerNews } from '~/services/api';
-import CommonList from './CommonList';
-import PostItem from './PostListItem';
 import CommentItem from './CommentListItem';
-import UserItem from './UserListItem';
+import CommonList from './CommonList';
 import Dropdown from './Dropdown';
+import PostItem from './PostListItem';
+import UserItem from './UserListItem';
 
 const topData = ['posts', 'comments', 'users'];
 const byData = {

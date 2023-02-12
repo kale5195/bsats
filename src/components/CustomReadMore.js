@@ -1,6 +1,7 @@
-import ReadMore from './Readmore';
-import useTailwind from '~/hooks/useTailwind';
 import { Text } from 'react-native';
+
+import useTailwind from '~/hooks/useTailwind';
+import ReadMore from './Readmore';
 
 export default function CustomReadMore({ text }) {
   const { tw } = useTailwind();

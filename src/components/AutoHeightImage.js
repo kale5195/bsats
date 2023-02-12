@@ -1,7 +1,7 @@
 import React from 'react';
 import { Image } from 'react-native';
 
-export default AutoHeightImage = React.memo(({ width, style, ...props }) => {
+function AutoHeightImage({ width, style, ...props }) {
   const [height, setHeight] = React.useState(1);
   return (
     <Image
@@ -12,4 +12,6 @@ export default AutoHeightImage = React.memo(({ width, style, ...props }) => {
       }}
     />
   );
-});
+}
+
+export default React.memo(AutoHeightImage);

@@ -1,25 +1,25 @@
-import Ionicons from '@expo/vector-icons/Ionicons';
+import * as WebBrowser from 'expo-web-browser';
 import Feather from '@expo/vector-icons/Feather';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
-import * as WebBrowser from 'expo-web-browser';
+import Ionicons from '@expo/vector-icons/Ionicons';
+import { observer } from 'mobx-react-lite';
+import { ActivityIndicator, KeyboardAvoidingView, Text, TouchableOpacity, View } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import { SpecialScrollView } from 'react-native-scroll-to-element';
 
-import { View, Text, ActivityIndicator, TouchableOpacity, KeyboardAvoidingView } from 'react-native';
-import { StackerNews } from '~/services/api';
 import useTailwind from '~/hooks/useTailwind';
-import PostDesc from '~/components/PostDesc';
-import PostUrl from '~/components/PostUrl';
-import PostMarkdown from '~/components/PostMarkdown';
+import { StackerNews } from '~/services/api';
 import { useStores } from '~/stores';
 import Comment from '~/components/Comment';
 import Container from '~/components/Container';
-import { observer } from 'mobx-react-lite';
 import PollView from '~/components/PollView';
-import { SpecialScrollView } from 'react-native-scroll-to-element';
+import PostDesc from '~/components/PostDesc';
+import PostMarkdown from '~/components/PostMarkdown';
+import PostUrl from '~/components/PostUrl';
 import RelatedPostList from '~/components/RelatedPostList';
 import ReplyButton from '~/components/ReplyButton';
 
-export default PostScreen = observer(({ route, navigation }) => {
+function PostScreen({ route, navigation }) {
   const { tw } = useTailwind();
   const { postStore } = useStores();
   const { id, cid } = route.params;
@@ -92,4 +92,6 @@ export default PostScreen = observer(({ route, navigation }) => {
       </KeyboardAwareScrollView>
     </Container>
   );
-});
+}
+
+export default observer(PostScreen);

@@ -1,9 +1,10 @@
 import React from 'react';
-import { View, Text, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { Image, Text, View } from 'react-native';
+
 import useTailwind from '~/hooks/useTailwind';
-import FixedTouchableOpacity from './FixedTouchableOpacity';
 import { abbrNum } from '~/lib/format';
+import FixedTouchableOpacity from './FixedTouchableOpacity';
 
 export default function UserListItem({ item }) {
   const { tw } = useTailwind();

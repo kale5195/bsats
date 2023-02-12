@@ -1,10 +1,11 @@
 import React from 'react';
-import { Text, TouchableOpacity, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { Text, TouchableOpacity, View } from 'react-native';
+import { SpecialView } from 'react-native-scroll-to-element';
+
 import useTailwind from '~/hooks/useTailwind';
 import PostDesc from './PostDesc';
 import PostMarkdown from './PostMarkdown';
-import { SpecialView } from 'react-native-scroll-to-element';
 import ReplyButton from './ReplyButton';
 
 export default function Comment({ item, idx, cid }) {

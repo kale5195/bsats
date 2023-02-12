@@ -1,12 +1,12 @@
 import React from 'react';
-import { View, Button, Text } from 'react-native';
-import { useStores } from '~/stores';
-import useTailwind from '~/hooks/useTailwind';
-import Container from '~/components/Container';
+import { Button, Text, View } from 'react-native';
+
 import { ITEM } from '~/fragments/items';
+import useTailwind from '~/hooks/useTailwind';
+import { useStores } from '~/stores';
 import FixedTouchableOpacity from '~/components/FixedTouchableOpacity';
 
-export default HistoryScreen = ({ navigation }) => {  
+export default function HistoryScreen({ navigation }) {
   const { tw } = useTailwind();
   const { postStore } = useStores();
 
@@ -26,4 +26,4 @@ export default HistoryScreen = ({ navigation }) => {
       ))}
     </View>
   );
-};
+}

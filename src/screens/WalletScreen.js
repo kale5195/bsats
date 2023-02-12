@@ -1,11 +1,12 @@
-import { View, TouchableOpacity } from 'react-native';
+import { TouchableOpacity, View } from 'react-native';
+
+import useTailwind from '~/hooks/useTailwind';
+import { StackerNews } from '~/services/api';
 import CommonList from '~/components/CommonList';
 import WalletHistoryItem from '~/components/WalletHistoryItem';
-import useTailwind from '~/hooks/useTailwind';
 import Text from '~/components/common/Text';
-import { StackerNews } from '~/services/api';
 
-export default WalletScreen = ({ route, navigation }) => {
+export default function WalletScreen({ route, navigation }) {
   const { tw } = useTailwind();
   const { data: meData } = StackerNews.me();
   const queryRes = StackerNews.getWalletHistory({ inc: 'invoice,withdrawal' });
@@ -33,4 +34,4 @@ export default WalletScreen = ({ route, navigation }) => {
       </View>
     </View>
   );
-};
+}

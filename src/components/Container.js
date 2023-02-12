@@ -1,4 +1,5 @@
 import { SafeAreaView } from 'react-native-safe-area-context';
+
 import useTailwind from '~/hooks/useTailwind';
 
 export default function Container({ style, children }) {

@@ -1,7 +1,8 @@
 import { useRef } from 'react';
-import { RefreshControl, ActivityIndicator, View, Text } from 'react-native';
-import { FlashList } from '@shopify/flash-list';
 import { useScrollToTop } from '@react-navigation/native';
+import { FlashList } from '@shopify/flash-list';
+import { ActivityIndicator, RefreshControl, Text, View } from 'react-native';
+
 import useTailwind from '~/hooks/useTailwind';
 import { queryClient } from '~/services/queryClient';
 

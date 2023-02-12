@@ -1,5 +1,6 @@
-import SelectDropdown from 'react-native-select-dropdown';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
+import SelectDropdown from 'react-native-select-dropdown';
+
 import useTailwind from '~/hooks/useTailwind';
 
 export default function Dropdown({ cat, data, defaultValue, setParams, width = 90 }) {

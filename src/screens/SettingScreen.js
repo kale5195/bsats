@@ -1,21 +1,22 @@
+import * as NavigationBar from 'expo-navigation-bar';
+import * as WebBrowser from 'expo-web-browser';
+import Feather from '@expo/vector-icons/Feather';
+import Ionicons from '@expo/vector-icons/Ionicons';
+import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import CookieManager from '@react-native-cookies/cookies';
 import _ from 'lodash';
 import { observer } from 'mobx-react-lite';
-import * as WebBrowser from 'expo-web-browser';
-import * as NavigationBar from 'expo-navigation-bar';
-import Ionicons from '@expo/vector-icons/Ionicons';
-import Feather from '@expo/vector-icons/Feather';
-import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
-import { View, TouchableOpacity, ScrollView, Alert, Share } from 'react-native';
+import { Alert, Platform, ScrollView, Share, TouchableOpacity, View } from 'react-native';
 import { useAppColorScheme } from 'twrnc';
-import Text from '~/components/common/Text';
-import { useStores } from '~/stores';
-import useTailwind from '~/hooks/useTailwind';
-import ProfileHeader from '~/components/ProfileHeader';
-import Container from '~/components/Container';
-import { StackerNews } from '~/services/api';
 
-export default SettingScreen = observer(({ navigation }) => {
+import useTailwind from '~/hooks/useTailwind';
+import { StackerNews } from '~/services/api';
+import { useStores } from '~/stores';
+import Container from '~/components/Container';
+import ProfileHeader from '~/components/ProfileHeader';
+import Text from '~/components/common/Text';
+
+function SettingScreen({ navigation }) {
   const SettingItem = ({ icon, name, onPress, hasNotification }) => {
     return (
       <TouchableOpacity
@@ -40,7 +41,7 @@ export default SettingScreen = observer(({ navigation }) => {
       setColorScheme(uiStore.themeColor);
       if (Platform.OS === 'android') {
         setTimeout(
-          () => NavigationBar.setBackgroundColorAsync(uiStore.themeColor == 'dark' ? 'black' : '#EFEFEF'),
+          () => NavigationBar.setBackgroundColorAsync(uiStore.themeColor === 'dark' ? 'black' : '#EFEFEF'),
           200
         );
       }
@@ -176,4 +177,6 @@ export default SettingScreen = observer(({ navigation }) => {
       </ScrollView>
     </Container>
   );
-});
+}
+
+export default observer(SettingScreen);

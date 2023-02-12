@@ -1,5 +1,6 @@
 import React from 'react';
 import { TextInput as NativeTextInput } from 'react-native';
+
 import useTailwind from '~/hooks/useTailwind';
 
 export default function TextInput({ onChangeText, value, style, placeholder = 'Please input content' }) {

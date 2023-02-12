@@ -1,11 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import { Text, View, Button, StyleSheet } from 'react-native';
+import React, { useEffect, useState } from 'react';
 import { BarCodeScanner } from 'expo-barcode-scanner';
+import { Button, StyleSheet, Text, View } from 'react-native';
+
+import useTailwind from '~/hooks/useTailwind';
 
 export default function WalletSendScreen() {
   const [hasPermission, setHasPermission] = useState(null);
   const [scanned, setScanned] = useState(false);
-
+  const { tw } = useTailwind();
   useEffect(() => {
     const getBarCodeScannerPermissions = async () => {
       const { status } = await BarCodeScanner.requestPermissionsAsync();

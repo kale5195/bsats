@@ -1,5 +1,6 @@
-import { Text, TouchableOpacity, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { Text, TouchableOpacity, View } from 'react-native';
+
 import useTailwind from '~/hooks/useTailwind';
 import FixedTouchableOpacity from './FixedTouchableOpacity';
 

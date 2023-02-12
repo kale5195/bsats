@@ -1,4 +1,5 @@
 import { Text, TouchableOpacity } from 'react-native';
+
 import useTailwind from '~/hooks/useTailwind';
 
 export default function CustomButton({ title, style, textStyle, onPress }) {

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const getStringChild = child => {
+const getStringChild = (child) => {
   return {
     type: 'string',
     content: child,
@@ -8,7 +8,7 @@ const getStringChild = child => {
   };
 };
 
-const getTextChild = child => {
+const getTextChild = (child) => {
   return {
     type: child?.type?.displayName,
     content: child.props.children,
@@ -27,13 +27,10 @@ export const getTextByChildren = (children, TextComponent) => {
 
   if (Array.isArray(children)) {
     return children
-      .filter(_child => {
-        return (
-          typeof _child === 'string' ||
-          _child?.type?.displayName === TextComponent?.displayName
-        );
+      .filter((_child) => {
+        return typeof _child === 'string' || _child?.type?.displayName === TextComponent?.displayName;
       })
-      .map(_child => {
+      .map((_child) => {
         if (typeof _child === 'string') {
           return getStringChild(_child);
         }
@@ -44,9 +41,8 @@ export const getTextByChildren = (children, TextComponent) => {
   return null;
 };
 
-export const linesToCharacters = lines => {
-  return lines.map(_line => _line?.text || '').join('');
+export const linesToCharacters = (lines) => {
+  return lines.map((_line) => _line?.text || '').join('');
 };
 
-export const insertAt = (str, sub, pos) =>
-  `${str.slice(0, pos)}${sub}${str.slice(pos)}`;
+export const insertAt = (str, sub, pos) => `${str.slice(0, pos)}${sub}${str.slice(pos)}`;

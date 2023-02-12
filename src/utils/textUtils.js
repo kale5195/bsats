@@ -1,5 +1,6 @@
-import _ from 'lodash';
 import URL from 'url';
+import _ from 'lodash';
+
 export function getSourceNameFromUrl(url) {
   if (_.isEmpty(url)) {
     return null;
