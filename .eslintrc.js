@@ -1,4 +1,7 @@
 module.exports = {
+  env: {
+    node: true,
+  },
   extends: ['universe/native'],
   rules: {
     'react/jsx-curly-brace-presence': 'off',

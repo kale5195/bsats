@@ -29,8 +29,7 @@ import SearchScreen from '~/screens/SearchScreen';
 import SettingScreen from '~/screens/SettingScreen';
 import WalletReceiveScreen from '~/screens/WalletReceiveScreen';
 import WalletScreen from '~/screens/WalletScreen';
-
-// import WalletSendScreen from '~/screens/WalletSendScreen';
+import WalletSendScreen from '~/screens/WalletSendScreen';
 
 const Stack = createStackNavigator();
 
@@ -134,7 +133,7 @@ export default AppNavigator = observer(({}) => {
         <Stack.Screen name="QRcodeScreen" component={QRcodeScreen} options={{ title: 'QRcode' }} />
         <Stack.Screen name="WalletScreen" component={WalletScreen} options={{ title: 'Wallet' }} />
         <Stack.Screen name="WalletReceiveScreen" component={WalletReceiveScreen} options={{ title: 'Receive' }} />
-        {/* <Stack.Screen name="WalletSendScreen" component={WalletSendScreen} options={{ title: 'Send' }} /> */}
+        <Stack.Screen name="WalletSendScreen" component={WalletSendScreen} options={{ title: 'Scan a QRcode' }} />
         <Stack.Screen name="LoginScreen" component={LoginScreen} options={{ title: 'Login' }} />
       </Stack.Navigator>
     </NavigationContainer>

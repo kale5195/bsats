@@ -1,12 +1,9 @@
 import React from 'react';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { useNavigation } from '@react-navigation/native';
-import { TouchableOpacity, View } from 'react-native';
+import { View } from 'react-native';
 
 import useTailwind from '~/hooks/useTailwind';
-import { timeSince } from '~/lib/time';
-import PostDesc from '~/components/PostDesc';
-import PostUrl from '~/components/PostUrl';
 import FixedTouchableOpacity from './FixedTouchableOpacity';
 import Text from './common/Text';
 
@@ -29,24 +26,58 @@ const getDescriptionFromType = (item) => {
       return 'Unknown';
   }
 };
+
+const getIcon = (item) => {
+  switch (item.status) {
+    case 'CONFIRMED':
+      return 'checkmark-circle';
+    case 'EXPIRED':
+      return 'close';
+    case 'PENDING':
+      return 'timer-outline';
+    default:
+      return 'checkmark-circle';
+  }
+};
+
+const getColor = (item) => {
+  switch (item.status) {
+    case 'EXPIRED':
+      return 'text-neutral-400';
+    case 'PENDING':
+      return 'text-neutral-400';
+    default:
+      if (item.sats > 0) {
+        return 'text-amber-500';
+      }
+      return 'text-red-500';
+  }
+};
 export default function WalletHistoryItem({ item }) {
   const { tw } = useTailwind();
   const navigation = useNavigation();
   const plus = item.sats > 0;
-  const expired = item.status === 'EXPIRED';
   return (
     <View style={tw`flex flex-row justify-between items-center mt-4 px-4`}>
-      <Ionicons size={20} style={tw`text-amber-500`} name={`${expired ? 'close' : 'checkmark-circle'}`} />
+      <Ionicons size={20} style={tw`text-amber-500`} name={getIcon(item)} />
       <View style={tw`ml-2 flex-1`}>
         <Text numberOfLines={1} style={tw`text-sm`}>
           {getDescriptionFromType(item)}
         </Text>
         <Text style={tw`text-xs text-neutral-500`}>
-          {item.type} - {new Date(item.createdAt).toLocaleDateString()}
+          {item.type} -{' '}
+          {new Date(item.createdAt).toLocaleString('en-US', {
+            year: 'numeric',
+            month: 'short',
+            day: 'numeric',
+            hour: 'numeric',
+            minute: 'numeric',
+            hour12: false,
+          })}
         </Text>
       </View>
       <View style={tw`ml-2 flex flex-row items-center flex-shrink-0 justify-end`}>
-        <Text style={tw`${expired ? 'text-neutral-400' : plus ? 'text-amber-500' : 'text-red-500'} text-sm`}>
+        <Text style={tw`${getColor(item)} text-sm`}>
           {plus ? '+' : ''}
           {item.sats}
         </Text>

@@ -54,7 +54,7 @@ export default function UpvoteButton({ id, meSats = 0, totalSats, size = 24, upd
         }}>
         <Pressable
           style={tw`flex-1 justify-center items-center bg-gray-100/40 dark:bg-transparent`}
-          onPress={(event) => event.target == event.currentTarget && setVisible(false)}>
+          onPress={(event) => event.target === event.currentTarget && setVisible(false)}>
           <View style={tw`bg-white dark:bg-gray-800 p-4 rounded h-[200px] w-[85%]`}>
             <Text style={tw`text-sm font-bold text-neutral-500 dark:text-neutral-200`}>Tip Amount</Text>
             <View style={tw`mt-4 flex flex-row items-center`}>

@@ -1,3 +1,4 @@
+import Ionicons from '@expo/vector-icons/Ionicons';
 import { TouchableOpacity, View } from 'react-native';
 
 import useTailwind from '~/hooks/useTailwind';
@@ -22,14 +23,18 @@ export default function WalletScreen({ route, navigation }) {
       <View style={tw`flex-1 mt-4`}>
         <CommonList idKey="id" queryRes={queryRes} ListItem={WalletHistoryItem} />
       </View>
-      <View style={tw`mt-4 mb-10 flex-row justify-between`}>
+      <View style={tw`mt-4 mb-10 flex-row justify-between items-center`}>
         <TouchableOpacity
-          style={tw`py-4 px-12`}
+          style={tw`py-4 px-12 flex flex-row items-center`}
           onPress={() => navigation.navigate('WalletReceiveScreen', { name: meData?.me?.name })}>
-          <Text>Receive</Text>
+          <Ionicons size={18} style={tw`text-amber-500`} name="md-download-outline" />
+          <Text style={tw`ml-1`}>Receive</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={tw`py-4 px-12`} onPress={() => navigation.navigate('WalletSendScreen')}>
-          <Text>Send</Text>
+        <TouchableOpacity
+          style={tw`py-4 px-12 flex flex-row items-center`}
+          onPress={() => navigation.navigate('WalletSendScreen')}>
+          <Ionicons size={18} style={tw`text-amber-500`} name="scan-outline" />
+          <Text style={tw`ml-1`}>Send</Text>
         </TouchableOpacity>
       </View>
     </View>

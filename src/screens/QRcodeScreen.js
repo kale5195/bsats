@@ -1,4 +1,3 @@
-import URL from 'url';
 import React from 'react';
 import { Text, TouchableOpacity, View } from 'react-native';
 import QRCode from 'react-native-qrcode-svg';
