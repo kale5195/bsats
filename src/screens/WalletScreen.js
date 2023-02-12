@@ -10,9 +10,9 @@ export default WalletScreen = ({ route, navigation }) => {
   const { data: meData } = StackerNews.me();
   const queryRes = StackerNews.getWalletHistory({ inc: 'invoice,withdrawal' });
   return (
-    <View style={tw`pt-10 flex-1`}>
+    <View style={tw`pt-8 flex-1`}>
       <View style={tw`flex flex-row justify-center items-baseline`}>
-        <Text style={tw`text-center text-2xl`}>{meData?.me?.sats} </Text>
+        <Text style={tw`text-center text-3xl`}>{meData?.me?.sats} </Text>
         <Text style={tw`ml-1 text-sm text-amber-500`}>sat</Text>
       </View>
       <View style={tw`flex flex-row justify-center`}>
@@ -27,7 +27,7 @@ export default WalletScreen = ({ route, navigation }) => {
           onPress={() => navigation.navigate('WalletReceiveScreen', { name: meData?.me?.name })}>
           <Text>Receive</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={tw`py-4 px-12`}>
+        <TouchableOpacity style={tw`py-4 px-12`} onPress={() => navigation.navigate('WalletSendScreen')}>
           <Text>Send</Text>
         </TouchableOpacity>
       </View>
