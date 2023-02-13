@@ -21,6 +21,7 @@ import FavScreen from '~/screens/FavScreen';
 import HistoryScreen from '~/screens/HistoryScreen';
 import HomeScreen from '~/screens/HomeScreen';
 import LoginScreen from '~/screens/LoginScreen';
+import PaymentConfirmScreen from '~/screens/PaymentConfirmScreen';
 import PostScreen from '~/screens/PostScreen';
 import ProfileScreen from '~/screens/ProfileScreen';
 import PublishScreen from '~/screens/PublishScreen';
@@ -134,6 +135,11 @@ export default AppNavigator = observer(({}) => {
         <Stack.Screen name="WalletScreen" component={WalletScreen} options={{ title: 'Wallet' }} />
         <Stack.Screen name="WalletReceiveScreen" component={WalletReceiveScreen} options={{ title: 'Receive' }} />
         <Stack.Screen name="WalletSendScreen" component={WalletSendScreen} options={{ title: 'Scan a QRcode' }} />
+        <Stack.Screen
+          name="PaymentConfirmScreen"
+          component={PaymentConfirmScreen}
+          options={{ title: 'Confrim Payment' }}
+        />
         <Stack.Screen name="LoginScreen" component={LoginScreen} options={{ title: 'Login' }} />
       </Stack.Navigator>
     </NavigationContainer>

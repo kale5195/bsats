@@ -15,7 +15,7 @@ const getDescriptionFromType = (item) => {
     case 'earn':
       return 'SN distributes sats to best users daily';
     case 'invoice':
-      return 'No description';
+      return 'Funding Wallet';
     case 'withdrawal':
       return 'Withdrawal';
     case 'stacked':

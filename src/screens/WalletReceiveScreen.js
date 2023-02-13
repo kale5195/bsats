@@ -8,6 +8,7 @@ import { useToast } from 'react-native-toast-notifications';
 import useTailwind from '~/hooks/useTailwind';
 import { encodeLNUrl } from '~/lib/lnurl';
 import { StackerNews } from '~/services/api';
+import { queryClient } from '~/services/queryClient';
 import SatModal from '~/components/SatModal';
 
 export default function WalletReceiveScreen({ route }) {
@@ -38,6 +39,7 @@ export default function WalletReceiveScreen({ route }) {
     } else {
       setAmount(customSats);
       setCode(data.createInvoice.bolt11);
+      queryClient.invalidateQueries({ queryKey: ['wallet-history', { inc: 'invoice,withdrawal' }] });
       return true;
     }
   };

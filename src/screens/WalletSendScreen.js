@@ -7,7 +7,7 @@ import { Button, StyleSheet, TouchableOpacity, View } from 'react-native';
 import useTailwind from '~/hooks/useTailwind';
 import Text from '~/components/common/Text';
 
-export default function WalletSendScreen() {
+export default function WalletSendScreen({ navigation }) {
   const [hasPermission, setHasPermission] = useState(null);
   const [scanned, setScanned] = useState(false);
   const { tw } = useTailwind();
@@ -20,11 +20,6 @@ export default function WalletSendScreen() {
     getBarCodeScannerPermissions();
   }, []);
 
-  const handleBarCodeScanned = ({ type, data }) => {
-    setScanned(true);
-    alert(`Bar code with type ${type} and data ${data} has been scanned!`);
-  };
-
   if (hasPermission === null) {
     return <Text>Requesting for camera permission</Text>;
   }
@@ -34,8 +29,12 @@ export default function WalletSendScreen() {
   const copyFromClipboard = async () => {
     const invoice = await Clipboard.getStringAsync();
     console.log(invoice);
+    navigation.navigate('PaymentConfirmScreen', { userInvoice: invoice });
   };
-
+  const handleBarCodeScanned = ({ type, data }) => {
+    setScanned(true);
+    console.log(type, data);
+  };
   return (
     <View style={tw`flex-1`}>
       <View style={tw`flex-1 flex flex-col justify-center`}>

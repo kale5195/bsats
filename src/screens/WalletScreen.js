@@ -1,4 +1,6 @@
+import React from 'react';
 import Ionicons from '@expo/vector-icons/Ionicons';
+import { useFocusEffect } from '@react-navigation/native';
 import { TouchableOpacity, View } from 'react-native';
 
 import useTailwind from '~/hooks/useTailwind';
@@ -8,8 +10,14 @@ import WalletHistoryItem from '~/components/WalletHistoryItem';
 import Text from '~/components/common/Text';
 
 export default function WalletScreen({ route, navigation }) {
+  useFocusEffect(
+    React.useCallback(() => {
+      refetchMe();
+    }, [queryRes])
+  );
+
   const { tw } = useTailwind();
-  const { data: meData } = StackerNews.me();
+  const { data: meData, refetch: refetchMe } = StackerNews.me();
   const queryRes = StackerNews.getWalletHistory({ inc: 'invoice,withdrawal' });
   return (
     <View style={tw`pt-8 flex-1`}>
