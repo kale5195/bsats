@@ -3,7 +3,7 @@ import { TextInput as NativeTextInput } from 'react-native';
 
 import useTailwind from '~/hooks/useTailwind';
 
-export default function TextInput({ onChangeText, value, style, placeholder = 'Please input content' }) {
+export default function TextInput({ onChangeText, value, style, placeholder = 'Please input content', ...props }) {
   const [inputFoucus, setInputFocus] = React.useState(false);
   const { tw } = useTailwind();
   return (
@@ -21,6 +21,7 @@ export default function TextInput({ onChangeText, value, style, placeholder = 'P
       value={value}
       multiline
       clearButtonMode="always"
+      {...props}
     />
   );
 }

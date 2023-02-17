@@ -1,16 +1,18 @@
 import React from 'react';
-import { TouchableOpacity, View } from 'react-native';
+import { StackActions } from '@react-navigation/native';
+import { ActivityIndicator, TouchableOpacity, View } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { useToast } from 'react-native-toast-notifications';
 
-import Text from '~/components/common/Text';
-import TextInput from '~/components/common/TextInput';
 import useTailwind from '~/hooks/useTailwind';
 import { StackerNews } from '~/services/api';
+import Text from '~/components/common/Text';
+import TextInput from '~/components/common/TextInput';
 
 export default function PublishScreen({ navigation, route }) {
   const { tw } = useTailwind();
   const toast = useToast();
+  const [loading, setLoading] = React.useState(false);
   const {
     params: { type },
   } = route;
@@ -25,23 +27,33 @@ export default function PublishScreen({ navigation, route }) {
         toast.show('URL should not be empty', { type: 'danger' });
         return;
       }
+      setLoading(true);
       const data = await StackerNews.createLink({ title: title.trim(), url: url.trim() });
       if (data?.errno === -1) {
         toast.show(data.msg, { type: 'danger' });
       } else {
-        navigation.push('PostScreen', {
-          id: data.upsertLink.id,
-        });
+        toast.show('success', { type: 'success' });
+        return navigation.dispatch(
+          StackActions.replace('PostScreen', {
+            id: data.upsertLink.id,
+          })
+        );
       }
+      setLoading(false);
     } else if (type === 'discussion') {
+      setLoading(true);
       const data = await StackerNews.createDiscussion({ title: title.trim(), text: text.trim() });
       if (data?.errno === -1) {
         toast.show(data.msg, { type: 'danger' });
       } else {
-        navigation.push('PostScreen', {
-          id: data.upsertDiscussion.id,
-        });
+        toast.show('success', { type: 'success' });
+        return navigation.dispatch(
+          StackActions.replace('PostScreen', {
+            id: data.upsertDiscussion.id,
+          })
+        );
       }
+      setLoading(false);
     }
   };
   const [title, setTitle] = React.useState('');
@@ -68,9 +80,13 @@ export default function PublishScreen({ navigation, route }) {
         )}
 
         <View style={tw`mt-8 flex flex-row justify-center`}>
-          <TouchableOpacity style={tw`bg-yellow-400 rounded-md`} onPress={onSumbit}>
-            <Text style={tw`text-white text-xl px-3 py-1`}>submit</Text>
-          </TouchableOpacity>
+          {loading ? (
+            <ActivityIndicator />
+          ) : (
+            <TouchableOpacity style={tw`bg-yellow-400 rounded-md`} onPress={onSumbit}>
+              <Text style={tw`text-white text-xl px-3 py-1`}>submit</Text>
+            </TouchableOpacity>
+          )}
         </View>
       </View>
     </KeyboardAwareScrollView>

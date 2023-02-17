@@ -1,6 +1,6 @@
 import { gql } from 'graphql-request';
+
 import { ITEM_FIELDS } from './items';
-import { USER_FIELDS } from './users';
 
 export const INVOICE = gql`
   query Invoice($id: ID!) {

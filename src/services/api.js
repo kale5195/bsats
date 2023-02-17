@@ -5,7 +5,7 @@ import { ITEMS, ITEM_FULL, ITEM_SEARCH, RELATED_ITEMS, TOP_ITEMS } from '~/fragm
 import { CREATE_INVOICE, CREATE_LINK, CREAT_COMMENT, CREAT_DISCUSSION, TIP_MUTATION } from '~/fragments/mutations';
 import { SUB_ITEMS } from '~/fragments/subs';
 import { ME_SSR, TOP_USERS, USER_FULL, USER_SEARCH } from '~/fragments/users';
-import { WALLET_HISTORY } from '~/fragments/wallet';
+import { CREATE_WITHDRAWL, SEND_TO_LNADDR, WALLET_HISTORY, WITHDRAWL } from '~/fragments/wallet';
 import useGraphInfiniteRequest from '~/services/useGraphInfiniteRequest';
 import useGraphQuery from '~/services/useGraphQuery';
 
@@ -58,5 +58,18 @@ export const StackerNews = {
   createLink: (v) => useGraphQuery(['create-link'], CREATE_LINK, v, { plain: true }),
   createDiscussion: (v) => useGraphQuery(['create-discussion'], CREAT_DISCUSSION, v, { plain: true }),
   createInvoice: (v) => useGraphQuery(['create-invoice'], CREATE_INVOICE, v, { plain: true }),
+  createWithdrawl: (v) => useGraphQuery(['create-withdrawl'], CREATE_WITHDRAWL, v, { plain: true }),
+  sendToLnAddr: (v) => useGraphQuery(['send-to-lnaddr'], SEND_TO_LNADDR, v, { plain: true }),
+  queryWithdrawl: (v) => useGraphQuery(['withdrawl'], WITHDRAWL, v, { plain: true }),
   getWalletHistory: (v) => useGraphInfiniteRequest(['wallet-history', v], WALLET_HISTORY, v, 'walletHistory', 'facts'),
+  getRecentInvoiceHistory: (options) =>
+    useGraphQuery(
+      ['recent-wallet-history'],
+      WALLET_HISTORY,
+      {
+        cursor: undefined,
+        inc: 'invoice',
+      },
+      options
+    ),
 };

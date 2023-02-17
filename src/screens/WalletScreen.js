@@ -5,6 +5,7 @@ import { TouchableOpacity, View } from 'react-native';
 
 import useTailwind from '~/hooks/useTailwind';
 import { StackerNews } from '~/services/api';
+import { queryClient } from '~/services/queryClient';
 import CommonList from '~/components/CommonList';
 import WalletHistoryItem from '~/components/WalletHistoryItem';
 import Text from '~/components/common/Text';
@@ -12,6 +13,7 @@ import Text from '~/components/common/Text';
 export default function WalletScreen({ route, navigation }) {
   useFocusEffect(
     React.useCallback(() => {
+      queryClient.invalidateQueries({ queryKey: ['wallet-history', { inc: 'invoice,withdrawal' }] });
       refetchMe();
     }, [queryRes])
   );

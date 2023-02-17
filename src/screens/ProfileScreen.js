@@ -1,13 +1,12 @@
 import React from 'react';
 import { ScrollView, Text, View, useWindowDimensions } from 'react-native';
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { TabBar, TabView } from 'react-native-tab-view';
 
+import useTailwind from '~/hooks/useTailwind';
 import Bio from '~/components/Bio';
 import CommentList from '~/components/CommentList';
 import PostList from '~/components/PostList';
 import ProfileHeader from '~/components/ProfileHeader';
-import useTailwind from '~/hooks/useTailwind';
 
 const renderScene = ({ route }) => {
   switch (route.key) {
