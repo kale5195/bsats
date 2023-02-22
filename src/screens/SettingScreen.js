@@ -99,7 +99,7 @@ function SettingScreen({ navigation }) {
         ) : (
           <TouchableOpacity style={tw`flex-col items-center justify-center py-8 px-4`} onPress={openLoginPage}>
             <Ionicons name="person-circle-outline" style={tw`text-6xl text-gray-500 dark:text-neutral-100`} />
-            <Text>Login in</Text>
+            <Text>Login</Text>
           </TouchableOpacity>
         )}
 
