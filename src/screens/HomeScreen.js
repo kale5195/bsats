@@ -37,7 +37,7 @@ function HomeScreen({ navigation }) {
     <TabBar
       {...props}
       style={tw`bg-[#EFEFEF] border-amber-300 dark:bg-black`}
-      tabStyle={tw`w-[100px] h-[46px]`}
+      tabStyle={tw`w-[125px] h-[46px]`}
       indicatorStyle={tw`bg-amber-300 w-[32px] ml-[35px] h-1 rounded ml-[34px]`}
       labelStyle={tw`p-0`}
       pressOpacity={1}
@@ -54,7 +54,7 @@ function HomeScreen({ navigation }) {
   const [routes] = React.useState([
     { key: 'recent', title: 'Recent' },
     { key: 'home', title: 'Home' },
-    { key: 'top', title: 'Top' },
+    // { key: 'top', title: 'Top' },
     { key: 'jobs', title: 'Jobs' },
   ]);
 

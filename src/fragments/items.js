@@ -1,4 +1,5 @@
 import { gql } from 'graphql-request';
+
 import { COMMENTS } from './comments';
 
 export const ITEM_FIELDS = gql`
@@ -6,52 +7,59 @@ export const ITEM_FIELDS = gql`
     id
     parentId
     createdAt
+    deletedAt
     title
     url
     user {
       name
+      streak
+      hideCowboyHat
       id
     }
-    fwdUser {
-      name
-      id
-    }
+    otsHash
+    position
     sats
-    upvotes
     boost
+    bounty
+    bountyPaidTo
     path
+    upvotes
     meSats
+    meDontLike
+    meBookmark
+    meSubscription
+    meForward
+    outlawed
+    freebie
     ncomments
+    commentSats
+    lastCommentAt
     maxBid
+    isJob
     company
     location
     remote
-    sub {
-      name
-      baseCost
-    }
+    subName
     pollCost
     status
     uploadId
     mine
-    root {
-      id
-      title
-      sub {
-        name
-      }
-      user {
-        name
-        id
-      }
-    }
   }
 `;
 
 export const ITEMS = gql`
   ${ITEM_FIELDS}
-  query items($sub: String, $sort: String, $cursor: String, $name: String, $within: String) {
-    items(sub: $sub, sort: $sort, cursor: $cursor, name: $name, within: $within) {
+  query SubItems(
+    $sub: String
+    $sort: String
+    $cursor: String
+    $type: String
+    $name: String
+    $when: String
+    $by: String
+    $limit: Int
+  ) {
+    items(sub: $sub, sort: $sort, cursor: $cursor, type: $type, name: $name, when: $when, by: $by, limit: $limit) {
       cursor
       items {
         ...ItemFields

@@ -12,3 +12,4 @@ web-build/
 expo-app.json
 # macOS
 .DS_Store
+ios/
