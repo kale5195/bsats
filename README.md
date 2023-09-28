@@ -1,4 +1,4 @@
-# Sorry...no time to maintain, please use stacker.news PWA.
+## Sorry...no time to maintain, please use stacker.news PWA.
 
 ## Bsats for stacker.news
 
